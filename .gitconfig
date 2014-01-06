@@ -1,0 +1,13 @@
+[user]
+	name = Fan ZHANG
+	email = fan.o.zhang@intel.com
+[color]
+	ui = true
+	status = auto
+	branch = auto
+[core]
+	editor = vim
+[push]
+	default = simple
+[http]
+	proxy = http://proxy-prc.intel.com:911
