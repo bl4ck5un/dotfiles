@@ -9,5 +9,3 @@
 	editor = vim
 [push]
 	default = simple
-[http]
-	proxy = http://proxy-prc.intel.com:911

@@ -34,7 +34,7 @@ prompt redhat
 
 ## Dirstack Configuration
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
-test -d `dirname $DIRSTACKFILE` || mkdir -p $DIRSTACKFILE 
+test -d `dirname $DIRSTACKFILE` || mkdir -p `dirname $DIRSTACKFILE` 
 test -f $DIRSTACKFILE || touch $DIRSTACKFILE
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
