@@ -13,14 +13,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
 
 which uname > /dev/null
 if [ $? -eq 0 ]; then
@@ -30,6 +22,7 @@ if [ $? -eq 0 ]; then
             alias ll='ls -alF'
             alias lt='ls -lt'
             alias grep='grep --color=auto'
+            # network & stuffs at Intel
             source .bashrc.intel
             ;;
         "Darwin")
