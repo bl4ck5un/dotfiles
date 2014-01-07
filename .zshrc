@@ -4,7 +4,8 @@ if [ $? -eq 0 ]; then
         "Linux")
             alias ls='ls --color=auto' ;;
         "Darwin")
-            alias ls='ls -g';;
+            echo "On Mac OS X"
+            alias ls='ls -G';;
         *)
             echo `uname` " is not supported";;
     esac
