@@ -13,7 +13,9 @@ alias lt='ls -lt'
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
-bindkey -v
+
+## bind keys as Vim
+bindkey -e
 
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
