@@ -32,6 +32,9 @@ autoload -U promptinit
 promptinit
 prompt redhat
 
+## 'command not found' hood
+[ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
+
 ## Dirstack Configuration
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
 test -d `dirname $DIRSTACKFILE` || mkdir -p `dirname $DIRSTACKFILE` 
