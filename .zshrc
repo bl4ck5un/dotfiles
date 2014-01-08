@@ -21,13 +21,12 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
-## bind keys as Vim
+## bind keys as Emacs
 bindkey -e
 
 zstyle :compinstall filename "$HOME/.zshrc"
 autoload -Uz compinit
 compinit
-# End of lines added by compinstall
 
 autoload -U promptinit
 promptinit
@@ -47,7 +46,5 @@ chpwd() {
 
 DIRSTACKSIZE=20
 setopt autopushd pushdsilent pushdtohome
-## Remove duplicate entries
 setopt pushdignoredups
-## This reverts the +/- operators.
 setopt pushdminus
