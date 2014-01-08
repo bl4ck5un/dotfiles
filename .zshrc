@@ -1,15 +1,22 @@
-which lsb_release > /dev/null
-if [ $? -ne 0 ]; then
-    echo "Not Linux(R), assume as Mac OS X"
-    alias ls='ls -g'
+which uname > /dev/null
+if [ $? -eq 0 ]; then
+    case `uname` in
+        "Linux")
+            alias ls='ls --color=auto' ;;
+        "Darwin")
+            echo "On Mac OS X"
+            alias ls='ls -G';;
+        *)
+            echo `uname` " is not supported";;
+    esac
 else
-    alias ls='ls --color=auto'
+    echo "uname is not available, please report"
 fi
 
-alias ll='ls -l'
+alias ll='ls -la'
 alias lt='ls -lt'
 
-
+## histroy
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -28,6 +35,7 @@ prompt redhat
 
 ## Dirstack Configuration
 DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+test -d `dirname $DIRSTACKFILE` || mkdir -p `dirname $DIRSTACKFILE` 
 test -f $DIRSTACKFILE || touch $DIRSTACKFILE
 if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
