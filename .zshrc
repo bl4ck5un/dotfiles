@@ -51,3 +51,6 @@ DIRSTACKSIZE=20
 setopt autopushd pushdsilent pushdtohome
 setopt pushdignoredups
 setopt pushdminus
+
+## PATH
+export PATH="/usr/local/bin:$PATH"

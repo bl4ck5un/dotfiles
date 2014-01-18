@@ -18,6 +18,8 @@ which uname > /dev/null
 if [ $? -eq 0 ]; then
     case `uname` in
         "Linux")
+            echo "On Linux" 
+            echo `uname -a`
             alias ls='ls --color=auto'
             alias ll='ls -alF'
             alias lt='ls -lt'
