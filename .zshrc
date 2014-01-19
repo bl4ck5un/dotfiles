@@ -1,13 +1,17 @@
 which uname > /dev/null
 if [ $? -eq 0 ]; then
+    welcome="`uname -rsp`"
     case `uname` in
         "Linux")
-            alias ls='ls --color=auto' ;;
+            echo "On Linux, $welcome";
+            alias ls='ls --color=auto'
+            ;;
         "Darwin")
-            echo "On Mac OS X"
-            alias ls='ls -G';;
+            echo "On Mac OS X, $welcome";
+            alias ls='ls -G'
+            ;;
         *)
-            echo `uname` " is not supported";;
+            echo `uname` " is not supported, please report";;
     esac
 else
     echo "uname is not available, please report"
@@ -54,3 +58,6 @@ setopt pushdminus
 
 ## PATH
 export PATH="/usr/local/bin:$PATH"
+
+# set default login
+cd $HOME
