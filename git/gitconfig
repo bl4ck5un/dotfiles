@@ -1,0 +1,10 @@
+[user]
+	name = Fan Zhang
+	email = hello.zhang1992@gmail.com
+
+[color]
+    ui = auto
+[alias]
+	st = status
+[push]
+	default = simple
