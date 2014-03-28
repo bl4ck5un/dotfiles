@@ -1,3 +1,0 @@
-export http_proxy='http://proxy-prc.intel.com:911'
-export https_proxy='http://proxy-prc.intel.com:911'
-export ftp_proxy='http://proxy-prc.intel.com:911'
