@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/Fan/dev/floodlight/.git'
+let g:netrw_dirhist_2='/Users/Fan/dev/floodlight/target'
+let g:netrw_dirhist_3='/Users/Fan/dev/floodlight/src/main/java/org/sdnplatform/sync/client'
+let g:netrw_dirhist_4='/Users/Fan/dev/ONEx/ONEx/build'
+let g:netrw_dirhist_5='/Users/Fan/dev/OpenQA/.git'
+let g:netrw_dirhist_6='/Users/Fan/Desktop'
