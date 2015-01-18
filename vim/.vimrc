@@ -1,3 +1,8 @@
+"""
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgray
+
+
 set nocompatible
 syntax enable
 set encoding=utf-8
