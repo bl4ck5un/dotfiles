@@ -23,3 +23,6 @@ set smartcase
 
 "" line number
 set nu
+
+"" NASM support
+autocmd BufRead,BufNewFile *.asm set ft=nasm
