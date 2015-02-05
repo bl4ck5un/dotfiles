@@ -26,3 +26,9 @@ set nu
 
 "" NASM support
 autocmd BufRead,BufNewFile *.asm set ft=nasm
+
+" map
+" run Python
+au Filetype c,cpp  nn <buffer> <F5> :up<Bar>exe '!make '.shellescape(expand('%:r'), 1)<CR>
+au Filetype python nn <buffer> <F5> :up<Bar>exe '!python '.shellescape(@%, 1)<CR>
+au Filetype java   nn <buffer> <F5> :up<Bar>exe '!javac '.shellescape(@%, 1)<CR>
