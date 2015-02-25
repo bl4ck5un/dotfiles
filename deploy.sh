@@ -15,3 +15,6 @@ gitconf="$HOME/.gitconfig"
     mv $gitconf $gitconf.bak
 }
 cp -f git/.gitconfig $gitconf
+
+# install Vundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
