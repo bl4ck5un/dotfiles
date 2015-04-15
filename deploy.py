@@ -54,11 +54,13 @@ def alert(msg):
         return 0
     return say
 
+syntax_hlt_plugin = 'cd ~/.oh-my-zsh/custom/plugins && \
+        git clone git://github.com/zsh-users/zsh-syntax-highlighting.git'
 
 tasks = [
     Task('vim', linker(HOME, '.vimrc'), cmd('vim vim +PluginInstall +qall')),
     Task('ycm', alert('You need to compile YCM manually')),
-    Task('zsh', cmd(oh_my_zsh), linker(HOME, '.zshrc')),
+    Task('zsh', cmd(oh_my_zsh), cmd(syntax_hlt_plugin), linker(HOME, '.zshrc')),
     ]
 
 [ t.run() for t in tasks]
