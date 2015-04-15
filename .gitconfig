@@ -1,13 +1,10 @@
 [user]
-	name = Fan ZHANG
-	email = hello.zhang1992@gmail.com
+	name = Fan Zhang
+	email = bl4ck5unxx@gmail.com
+
 [color]
-	ui = true
-	status = auto
-	branch = auto
-[core]
-	editor = vim
-[push]
-	default = simple
+    ui = auto
 [alias]
 	st = status
+[push]
+	default = simple
