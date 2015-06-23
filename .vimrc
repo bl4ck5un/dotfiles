@@ -1,12 +1,32 @@
+" -----------------------------------------------------------
+" Fz84's ultimate vimrc, good for C/C++ developer
+"                           ,---.-,                
+"                          '   ,'  '.         ,--, 
+"     ,---,.              /   /      \      ,--.'| 
+"   ,'  .' |             .   ;  ,/.  :   ,--,  | : 
+" ,---.'   |       ,----,'   |  | :  ;,---.'|  : ' 
+" |   |   .'     .'   .`|'   |  ./   :;   : |  | ; 
+" :   :  :    .'   .'  .'|   :       ,|   | : _' | 
+" :   |  |-,,---, '   ./  \   \     / :   : |.'  | 
+" |   :  ;/|;   | .'  /    ;   ,   '\ |   ' '  ; : 
+" |   |   .'`---' /  ;--, /   /      \\   \  .'. | 
+" '   :  '    /  /  / .`|.   ;  ,/.  : `---`:  | ' 
+" |   |  |  ./__;     .' '   |  | :  ;      '  ; | 
+" |   :  \  ;   |  .'    '   |  ./   :      |  : ; 
+" |   | ,'  `---'        |   :      /       '  ,/  
+" `----'                  \   \   .'        '--'   
+"                          `---`-'                 
 " Based on: Amir Salihefendic (https://github.com/amix/vimrc)
-"
-" Vundle
-""""""""""""""""""""""""""""""
+" -----------------------------------------------------------
+
+
+" -----------------------------------------------------------
+"  Configuration for Vundle
+" -----------------------------------------------------------
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
@@ -17,45 +37,27 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'majutsushi/tagbar'
 call vundle#end()            " required
 
-" => General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable filetype plugins
 filetype plugin on
 filetype indent on
 
-" Sets how many lines of history VIM has to remember
+
 set history=700
+set autoread " autoread when a file is changed from the outside
 
-" Set to auto read when a file is changed from the outside
-set autoread
-
-" map leader
+" map <leader> to comma
 let mapleader = ","
 let g:mapleader = ","
 
-" Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>w :w!<CR>  " Fast saving
+nmap <leader>q :x<CR> " Fast quiting
 
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
-" command W w !sudo tee % > /dev/null
+" -----------------------------------------------------------
+" user interface
+" -----------------------------------------------------------
 
+set so=7 " screen offset
 
-" => VIM user interface
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" screen offset
-set so=7
-
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-" Turn on the WiLd menu
 set wildmenu
-
-" Ignore compiled files
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
     set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -63,14 +65,9 @@ else
     set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
-"Always show current position
-set ruler
-
-" Height of the command bar
-set cmdheight=1
-
-" A buffer becomes hidden when it is abandoned
-set hid
+set ruler "Always show current position
+set cmdheight=1 " Height of the command bar
+set hid " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -81,6 +78,7 @@ if has('mouse')
   set mouse=a
 endif
 
+" make search modern and usable
 set ignorecase
 set smartcase
 set hlsearch
@@ -103,24 +101,23 @@ set novisualbell
 set t_vb=
 set tm=500
 
-" Add a bit extra margin to the left
-set foldcolumn=1
 
-" => Colors and Fonts
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Enable syntax highlighting
+" -----------------------------------------------------------
+" Colors and Fonts
+" -----------------------------------------------------------
+
 syntax enable 
 
-let g:solarized_termcolors =   256
-let g:solarized_underline  = 0
-
-if !has("gui_running")
-    set background=light
-    colorscheme solarized
-end
-
-" Set extra options when running in GUI mode
 if has("gui_running")
+    " solarized scheme works better with GUI
+    " see https://github.com/altercation/vim-colors-solarized
+    let g:solarized_termcolors =   256
+    let g:solarized_underline  = 0
+    set background=dark
+    colorscheme solarized
+    set guifont=Monaco:h13
+
+    " Set extra options when running in GUI mode
     set guioptions-=T
     set guioptions-=e
     set t_Co=256
@@ -130,53 +127,66 @@ endif
 set encoding=utf8
 set ffs=unix,dos,mac
 
-" => Files, backups and undo
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -----------------------------------------------------------
+" Files, backups and undo
+" -----------------------------------------------------------
 set nobackup
 set nowb
 set noswapfile
 
 
-" => Text, tab and indent related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -----------------------------------------------------------
+" Text, tab and indent related
+" -----------------------------------------------------------
 set expandtab
 set smarttab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
-set lbr
-set tw=500
+" Linebreak on 80 characters
+set linebreak
+set breakat=80
 
-set ai "Auto indent
-set si "Smart indent
+" disable automatic wrapping
+" as suggested by http://blog.ezyang.com/2010/03/vim-textwidth/
+set textwidth=0
+set fo-=t
+
+" also comes from by http://blog.ezyang.com/2010/03/vim-textwidth/
+augroup vimrc_autocmds
+  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+  autocmd BufEnter * match OverLength /\%80v.*/
+augroup END
+
+set autoindent "Auto indent
+set smartindent "Smart indent
 set wrap "Wrap lines
 
 
-" => Moving around, tabs, windows and buffers
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -----------------------------------------------------------
+" Moving around, tabs, windows and buffers
+" -----------------------------------------------------------
+
 " Treat long lines as break lines (useful when moving around in them)
-map j gj
-map k gk
+nnoremap j gj
+nnoremap k gk
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" Disable search highlight when <leader><CR> is pressed
+map <silent> <leader><CR> :noh<CR>
 
-" Useful mappings for managing tabs
+" mappings for managing tabs
 " tab navigation like firefox
-nnoremap <leader>,   :tabprevious<CR>
-nnoremap <leader>.   :tabnext<CR>
-inoremap <leader>,   <Esc>:tabprevious<CR>i
-inoremap <leader>.   <Esc>:tabnext<CR>i
+nnoremap <silent> <leader>, :tabprevious<CR>
+nnoremap <silent> <leader>. :tabnext<CR>
+inoremap <silent> <leader>, <Esc>:tabprevious<CR>i
+inoremap <silent> <leader>. <Esc>:tabnext<CR>i
 
-" Let 'tl' toggle between this and the last accessed tab
+" Let <leader>lt toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <Leader>lt :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
 
-
 " Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
@@ -189,7 +199,7 @@ try
 catch
 endtry
 
-" Return to last edit position when opening files (You want this!)
+" Remember last edit position
 autocmd BufReadPost *
      \ if line("'\"") > 0 && line("'\"") <= line("$") |
      \   exe "normal! g`\"" |
@@ -198,10 +208,10 @@ autocmd BufReadPost *
 set viminfo^=%
 
 
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Format the status line
+" -----------------------------------------------------------
+" Status line
+" -----------------------------------------------------------
+
 set laststatus=2
 if has('statusline')
         function! SetStatusLineStyle()
@@ -211,7 +221,7 @@ if has('statusline')
                         \"%{'$'[!&list]}"               .
                         \"%{'~'[&pm=='']}"              .
                         \"%="                           .
-                        \"#%n %l/%L,%c%V "              .
+                        \"Buf:%n %l:%c%V(%p%%)"              .
                         \""
         endfunc
         call SetStatusLineStyle()
@@ -219,14 +229,13 @@ if has('statusline')
         if has('title')
                 set titlestring=%t%(\ [%R%M]%)
         endif
-
 endif
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remap VIM 0 to first non-blank character
+" -----------------------------------------------------------
+" Editing mappings
+" -----------------------------------------------------------
+
 map 0 ^
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
@@ -239,8 +248,10 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
+" -----------------------------------------------------------
 " => Ack searching and cope displaying
 "    requires ack.vim - it's much better than vimgrep/grep
+" -----------------------------------------------------------
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
@@ -268,34 +279,28 @@ map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Pressing ,ss will toggle and untoggle spell checking
+" *Spell checking*
+" use <leader>ss to trigger spell check
 if v:version >= 700
     setlocal spell spelllang=en
+    set nospell " don't check until I ask you so
     nmap <leader>ss :set spell!<cr>
 endif
 
-" Shortcuts using <leader>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>s? z=
 
+" -----------------------------------------------------------
+" Misc
+" -----------------------------------------------------------
 
-" => Misc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Remove the Windows ^M - when the encodings gets messed up
-noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 " display lineno
 set nu
 
 
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" -----------------------------------------------------------
+" Helper functions
+" -----------------------------------------------------------
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -323,15 +328,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    en
-    return ''
-endfunction
-
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
@@ -353,33 +349,6 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" NERDTreeToggle
-nmap <F2> :NERDTreeToggle<cr>
-
-" Tarbar
-nmap <F8> :TagbarToggle<CR>
-
-
-" CCTree
-let g:CCTreeKeyTraceForwardTree = '<C-\>>' 
-let g:CCTreeKeyTraceReverseTree = '<C-\><' 
-let g:CCTreeKeyHilightTree = '<C-l>'        " Static highlighting
-let g:CCTreeKeySaveWindow = '<C-\>y' 
-let g:CCTreeKeyToggleWindow = '<C-\>w' 
-let g:CCTreeKeyCompressTree = 'zs'     " Compress call-tree 
-let g:CCTreeKeyDepthPlus = '<C-\>=' 
-let g:CCTreeKeyDepthMinus = '<C-\>-'
-
-" YCM
+" Settings for YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 0
-
-" Settings for taglist.vim
-noremap <F3> :TlistToggle<CR>
-let Tlist_Use_Right_Window=1
-let Tlist_Auto_Open=0
-let Tlist_Enable_Fold_Column=0
-let Tlist_Compact_Format=0
-let Tlist_WinWidth=28
-let Tlist_Exit_OnlyWindow=1
-let Tlist_File_Fold_Auto_Close = 1
