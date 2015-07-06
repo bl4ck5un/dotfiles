@@ -4,15 +4,34 @@ dotfiles
 Shell
 -----
 
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is a great
-framework for managing `zsh` configuration.
+[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is a great framework for
+managing `zsh` configuration.
+
+Setup steps:
+
+1. install `zsh` if not installed, 
+
+    ZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
+    sh -c "$(curl -fsSL $ZSH)"
+
+2. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
+
 
 Vim
 ---
 
-1. [Vundle](https://github.com/gmarik/Vundle.vim)
+1. Install lastest Vim from brew: `brew insatll vim`
 
-    `$ git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle`
+2. Install [Vundle](https://github.com/gmarik/Vundle.vim)
 
-2. [For Python](http://unlogic.co.uk/2013/02/08/vim-as-a-python-ide/) recommends
-several useful tools to set up Python development environment.
+    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+
+3. Syslink `.vimrc`: `ln -sf $(pwd)/.vimrc ~/.vimrc`
+
+4. Install Vim plugins: `vim +PluginInstall`
+
+5. Compile `YouCompleteMe` before using: 
+
+    cd ~/.vim/bundle/YouCompleteMe
+    brew install cmake
+    ./install.sh --clange-completer
