@@ -115,7 +115,7 @@ if has("gui_running")
     let g:solarized_underline  = 0
     set background=dark
     colorscheme solarized
-    set guifont=Monaco:h13
+    set guifont=Menlo:h13
 
     " Set extra options when running in GUI mode
     set guioptions-=T
