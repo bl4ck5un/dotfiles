@@ -111,8 +111,8 @@ syntax enable
 if has("gui_running")
     " solarized scheme works better with GUI
     " see https://github.com/altercation/vim-colors-solarized
-    let g:solarized_termcolors =   256
-    let g:solarized_underline  = 0
+    let g:solarized_termcolors=256
+    let g:solarized_underline=0
     set background=dark
     colorscheme solarized
     set guifont=Menlo:h13
