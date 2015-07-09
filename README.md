@@ -20,7 +20,9 @@ Setup steps:
 Vim
 ---
 
-1. Install lastest Vim from brew: `brew insatll vim`
+0. Install lastest Vim from brew: `brew insatll vim`
+
+1. Syslink `.vim/ftplugin`: `ln -sf $(pwd)/vim ~/.vim/ftplugin` 
 
 2. Install [Vundle](https://github.com/gmarik/Vundle.vim)
 
