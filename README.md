@@ -16,6 +16,10 @@ Setup steps:
 
 2. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
 
+3. install `brew` if not installed,
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 
 Vim
 ---
