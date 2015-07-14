@@ -26,11 +26,14 @@ Vim
 
 0. Install lastest Vim from brew: `brew insatll vim`
 
-1. Syslink `.vim/ftplugin`: `ln -sf $(pwd)/vim ~/.vim/ftplugin` 
+1. Syslink `.vim/ftplugin`
+
+    mkdir ~/.vim
+    ln -sf $(pwd)/vim/ftplugin ~/.vim
 
 2. Install [Vundle](https://github.com/gmarik/Vundle.vim)
 
-    git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 3. Syslink `.vimrc`: `ln -sf $(pwd)/.vimrc ~/.vimrc`
 
@@ -40,4 +43,4 @@ Vim
 
     cd ~/.vim/bundle/YouCompleteMe
     brew install cmake
-    ./install.sh --clange-completer
+    ./install.sh --clang-completer
