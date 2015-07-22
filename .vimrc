@@ -35,6 +35,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'majutsushi/tagbar'
+Plugin 'airblade/vim-gitgutter'
 call vundle#end()            " required
 
 filetype plugin on
