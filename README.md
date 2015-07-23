@@ -9,16 +9,20 @@ managing `zsh` configuration.
 
 Setup steps:
 
-1. install `zsh` if not installed, 
+0. install `brew` if not installed,
+
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+1. Install `zsh` if not installed: `brew install zsh`
+
+2. Install oh-my-zsh:
 
     ZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
     sh -c "$(curl -fsSL $ZSH)"
 
-2. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
+3. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
 
-3. install `brew` if not installed,
-
-    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+4. restart shell to make it effective
 
 
 Vim
@@ -37,10 +41,16 @@ Vim
 
 3. Syslink `.vimrc`: `ln -sf $(pwd)/.vimrc ~/.vimrc`
 
-4. Install Vim plugins: `vim +PluginInstall`
+4. Install Vim plugins: `vim +PluginInstall +qall`
 
 5. Compile `YouCompleteMe` before using: 
 
     cd ~/.vim/bundle/YouCompleteMe
     brew install cmake
     ./install.sh --clang-completer
+
+
+iTerm2
+------
+
+You can import solarized color scheme if you like.
