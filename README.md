@@ -24,6 +24,12 @@ Setup steps:
 
 4. restart shell to make it effective
 
+git
+---
+
+Resume global git configuration (name, email, etc.) before using it.
+
+    ln -sf $(pwd)/.gitconfig ~/.gitconfig
 
 Vim
 ---
