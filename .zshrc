@@ -74,8 +74,10 @@ fi
 
 alias l='ls -l'
 
-# if you install using pip --user, it goes to the following place
+# if you install using pip --user
+# if you install using gem --user
 export PATH=$PATH:/Users/Fan/Library/Python/2.7/bin
+export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin 
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
