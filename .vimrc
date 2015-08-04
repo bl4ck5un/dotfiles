@@ -36,6 +36,8 @@ Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()            " required
 
 filetype plugin on
@@ -351,5 +353,5 @@ function! <SID>BufcloseCloseIt()
 endfunction
 
 " Settings for YCM
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_show_diagnostics_ui = 0
+let g:ycm_confirm_extra_conf = 1
+let g:ycm_show_diagnostics_ui = 1
