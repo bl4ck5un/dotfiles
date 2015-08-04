@@ -44,7 +44,6 @@ call vundle#end()            " required
 filetype plugin on
 filetype indent on
 
-
 set history=700
 set autoread " autoread when a file is changed from the outside
 
@@ -77,11 +76,6 @@ set hid " A buffer becomes hidden when it is abandoned
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" In many terminal emulators the mouse works just fine, thus enable it.
-if has('mouse')
-set mouse=a
-endif
 
 " make search modern and usable
 set ignorecase
