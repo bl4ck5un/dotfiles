@@ -93,3 +93,5 @@ export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+eval `/usr/libexec/path_helper -s`
