@@ -65,11 +65,12 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ $(uname) -eq 'Darwin' ]]; then
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='mvim'
- fi
+  eval `/usr/libexec/path_helper -s`
+  if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+  else
+    export EDITOR='mvim'
+  fi
 fi
 
 alias l='ls -l'
@@ -94,4 +95,3 @@ export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
-eval `/usr/libexec/path_helper -s`
