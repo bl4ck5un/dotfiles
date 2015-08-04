@@ -1,5 +1,5 @@
 [core]
-    editor = /usr/local/bin/vim
+    editor = vim
 [user]
 	name = Fan Zhang
 	email = bl4ck5unxx@gmail.com

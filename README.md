@@ -22,7 +22,7 @@ Setup steps:
 
 3. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
 
-4. restart shell to make it effective
+4. `source ~/.zshrc`
 
 git
 ---

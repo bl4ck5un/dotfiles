@@ -36,6 +36,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'jiangmiao/auto-pairs.git'
 call vundle#end()            " required
 
 filetype plugin on
@@ -49,8 +50,9 @@ set autoread " autoread when a file is changed from the outside
 let mapleader = ","
 let g:mapleader = ","
 
-nmap <leader>w :w!<CR>  " Fast saving
-nmap <leader>q :x<CR> " Fast quiting
+nmap <leader>w :w!<CR>
+nmap <leader>q :x<CR>
+inoremap <leader>q :wq<CR>
 
 " -----------------------------------------------------------
 " user interface
@@ -61,9 +63,9 @@ set so=7 " screen offset
 set wildmenu
 set wildignore=*.o,*~,*.pyc
 if has("win16") || has("win32")
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 else
-    set wildignore+=.git\*,.hg\*,.svn\*
+set wildignore+=.git\*,.hg\*,.svn\*
 endif
 
 set ruler "Always show current position
@@ -76,7 +78,7 @@ set whichwrap+=<,>,h,l
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
-  set mouse=a
+set mouse=a
 endif
 
 " make search modern and usable
@@ -110,19 +112,19 @@ set tm=500
 syntax enable 
 
 if has("gui_running")
-    " solarized scheme works better with GUI
-    " see https://github.com/altercation/vim-colors-solarized
-    let g:solarized_termcolors=256
-    let g:solarized_underline=0
-    set background=dark
-    colorscheme solarized
-    set guifont=Menlo:h13
+" solarized scheme works better with GUI
+" see https://github.com/altercation/vim-colors-solarized
+let g:solarized_termcolors=256
+let g:solarized_underline=0
+set background=dark
+colorscheme solarized
+set guifont=Menlo:h13
 
-    " Set extra options when running in GUI mode
-    set guioptions-=T
-    set guioptions-=e
-    set t_Co=256
-    set guitablabel=%M\ %t
+" Set extra options when running in GUI mode
+set guioptions-=T
+set guioptions-=e
+set t_Co=256
+set guitablabel=%M\ %t
 endif
 
 set encoding=utf8
@@ -352,4 +354,4 @@ endfunction
 
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
-let g:ycm_show_diagnostics_ui = 0
+let g:ycm_show_diagnostics_ui = 1
