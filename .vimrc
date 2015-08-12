@@ -39,10 +39,17 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'jcf/vim-latex'
 call vundle#end()            " required
 
 filetype plugin on
 filetype indent on
+
+" for LaTeX integration works
+set omnifunc=syntaxcomplete#Complete
+set shellslash
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
 
 set history=700
 set autoread " autoread when a file is changed from the outside
@@ -351,3 +358,7 @@ endfunction
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
+
+
+" AutoPairs
+let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
