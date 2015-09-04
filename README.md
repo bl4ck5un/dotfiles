@@ -24,7 +24,7 @@ Setup steps:
 
 4. Take immediate effective
 
-       source ~/.zshrc
+        source ~/.zshrc
 
 git
 ---
@@ -38,7 +38,7 @@ Vim
 
 0. Install latest Vim from brew
 
-        brew insatll vim
+        brew install vim
 
 1. Syslink `.vim/ftplugin`
 
