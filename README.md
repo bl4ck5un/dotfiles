@@ -4,25 +4,27 @@ dotfiles
 Shell
 -----
 
-[oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) is a great framework for
-managing `zsh` configuration.
-
 Setup steps:
 
 0. install `brew` if not installed,
 
         ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
-1. Install `zsh` if not installed: `brew install zsh`
+1. Install `zsh` if not installed
+
+        brew install zsh
 
 2. Install oh-my-zsh:
 
-        ZSH="https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh"
-        sh -c "$(curl -fsSL $ZSH)"
+        sh -c $(curl -fsSL "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
 
-3. symlink `.zshrc`: `ln -sf $(pwd)/.zshrc ~/.zshrc`
+3. symlink `.zshrc`
 
-4. `source ~/.zshrc`
+        ln -sf $(pwd)/.zshrc ~/.zshrc
+
+4. Take immediate effective
+
+       source ~/.zshrc
 
 git
 ---
@@ -34,7 +36,9 @@ Resume global git configuration (name, email, etc.) before using it.
 Vim
 ---
 
-0. Install lastest Vim from brew: `brew insatll vim`
+0. Install latest Vim from brew
+
+        brew insatll vim
 
 1. Syslink `.vim/ftplugin`
 
@@ -45,9 +49,13 @@ Vim
 
         git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
-3. Syslink `.vimrc`: `ln -sf $(pwd)/.vimrc ~/.vimrc`
+3. Syslink `.vimrc`
+    
+        ln -sf $(pwd)/.vimrc ~/.vimrc
 
-4. Install Vim plugins: `vim +PluginInstall +qall`
+4. Install Vim plug-ins
+
+        vim +PluginInstall +qall
 
 5. Compile `YouCompleteMe` before using: 
 

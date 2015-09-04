@@ -362,3 +362,6 @@ let g:ycm_show_diagnostics_ui = 1
 
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+
+" Markdown
+let g:vim_markdown_folding_disabled=1
