@@ -64,11 +64,10 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='vim'
 if [[ $(uname) == 'Darwin' ]]; then
   eval `/usr/libexec/path_helper -s`
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
+  if [[ ! -n $SSH_CONNECTION ]]; then
     export EDITOR='mvim'
   fi
 fi
