@@ -55,8 +55,8 @@ set history=700
 set autoread " autoread when a file is changed from the outside
 
 " map <leader> to comma
-let mapleader = ","
-let g:mapleader = ","
+let mapleader=","
+let g:mapleader=","
 
 nmap <leader>w :w!<CR>
 nmap <leader>q :x<CR>
@@ -166,7 +166,7 @@ augroup END
 
 set autoindent "Auto indent
 set smartindent "Smart indent
-set wrap "Wrap lines
+set nowrap "Wrap lines
 
 
 " -----------------------------------------------------------
@@ -176,6 +176,10 @@ set wrap "Wrap lines
 " Treat long lines as break lines (useful when moving around in them)
 nnoremap j gj
 nnoremap k gk
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap ^ g^
+
 
 " Disable search highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>

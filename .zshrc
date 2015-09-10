@@ -47,9 +47,9 @@ CASE_SENSITIVE="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #
-if [[ $(uname) -eq 'Darwin' ]]; then
+if [[ $(uname) == 'Darwin' ]]; then
     plugins=(brew git zsh-syntax-highlighting)
-elif [[ $(uname) -eq 'Linux' ]]; then
+elif [[ $(uname) == 'Linux' ]]; then
     plugins=(git)
 fi
 
@@ -95,3 +95,6 @@ export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+# OCaml stuff
+[[ -f /Users/Fan/.opam/opam-init/init.zsh ]] && \
+    . /Users/Fan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
