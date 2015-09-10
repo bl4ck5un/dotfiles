@@ -362,7 +362,11 @@ endfunction
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 
 
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+
+" Markdown
+let g:vim_markdown_folding_disabled=1
