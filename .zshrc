@@ -97,3 +97,5 @@ export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin
 # OCaml stuff
 [[ -f /Users/Fan/.opam/opam-init/init.zsh ]] && \
     . /Users/Fan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
