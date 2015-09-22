@@ -38,8 +38,6 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'jcf/vim-latex'
 call vundle#end()            " required
 
 filetype plugin on
