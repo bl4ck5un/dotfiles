@@ -99,3 +99,8 @@ export PATH=$PATH:/Users/Fan/.gem/ruby/2.0.0/bin
     . /Users/Fan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
+
+# Virtualenvwrapper
+export WORKON_HOME=~/Envs
+source ~/Library/Python/2.7/bin/virtualenvwrapper.sh 
+source /usr/local/opt/autoenv/activate.sh
