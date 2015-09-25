@@ -38,21 +38,16 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
+Plugin 'scrooloose/nerdcommenter'
 call vundle#end()            " required
 
 filetype plugin on
 filetype indent on
 
-" for LaTeX integration works
-set omnifunc=syntaxcomplete#Complete
-set shellslash
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-
 set history=700
 set autoread " autoread when a file is changed from the outside
 
-" map <leader> to comma
+" set <leader> to comma
 let mapleader=","
 let g:mapleader=","
 
@@ -64,7 +59,7 @@ inoremap <leader>q :wq<CR>
 " user interface
 " -----------------------------------------------------------
 
-set so=7 " screen offset
+set so=5 " screen offset
 
 set wildmenu
 set wildignore=*.o,*~,*.pyc
