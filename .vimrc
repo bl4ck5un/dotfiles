@@ -39,6 +39,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
 call vundle#end()            " required
 
 filetype plugin on
@@ -159,7 +160,7 @@ augroup END
 
 set autoindent "Auto indent
 set smartindent "Smart indent
-set nowrap "Wrap lines
+set wrap 
 
 
 " -----------------------------------------------------------
@@ -357,7 +358,12 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 map <F9> :YcmCompleter FixIt<CR>
-
+nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
+
+" VIM-LaTeX
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
