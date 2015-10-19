@@ -20,7 +20,7 @@ Setup steps:
 
 3. symlink `.zshrc`
 
-        ln -sf $(pwd)/.zshrc ~/.zshrc
+        ln -sf $(pwd)/.zshrc-dummy ~/.zshrc
 
 4. Take immediate effective
 
@@ -61,7 +61,7 @@ Vim
 
         cd ~/.vim/bundle/YouCompleteMe
         brew install cmake
-        ./install.sh --clang-completer
+        ./install.py --clang-completer
 
 
 iTerm2
