@@ -61,7 +61,7 @@ Vim
 
         cd ~/.vim/bundle/YouCompleteMe
         brew install cmake
-        ./install.sh --clang-completer
+        ./install.py --clang-completer
 
 
 iTerm2
