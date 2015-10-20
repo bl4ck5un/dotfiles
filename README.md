@@ -18,9 +18,9 @@ Setup steps:
 
         sh -c $(curl -fsSL "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
 
-3. symlink `.zshrc`
-
-        ln -sf $(pwd)/.zshrc ~/.zshrc
+3. copy `.zsh-dummpy` to `~/.zshrc`. (Revised: using a wrapper of the actual `.zshrc` allows better portability)
+    
+        cp -f .zsh-dummp ~/.zshrc
 
 4. Take immediate effective
 
