@@ -35,6 +35,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'mileszs/ack.vim'
 Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'majutsushi/tagbar'
+Plugin 'vim-scripts/taglist.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
@@ -367,3 +368,6 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 " VIM-LaTeX
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
+
+" ctags
+set tags=tags;
