@@ -367,3 +367,6 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 " VIM-LaTeX
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
+
+" Ctags
+set tags=tags;
