@@ -116,7 +116,6 @@ let g:solarized_termcolors=256
 let g:solarized_underline=0
 set background=dark
 colorscheme solarized
-set guifont=Inconsolata:h13
 
 " Set extra options when running in GUI mode
 set guioptions-=T
