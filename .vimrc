@@ -40,7 +40,6 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'godlygeek/tabular'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'vim-scripts/LaTeX-Suite-aka-Vim-LaTeX'
 call vundle#end()            " required
 
 filetype plugin on
@@ -356,7 +355,9 @@ endfunction
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
+let g:ycm_server_keep_logfiles = 1
+
 map <F9> :YcmCompleter FixIt<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
@@ -364,9 +365,8 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 
-" VIM-LaTeX
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
+" Make
+nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 
 " Ctags
 set tags=tags;
