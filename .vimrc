@@ -355,8 +355,12 @@ endfunction
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
-let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
 let g:ycm_server_keep_logfiles = 1
+
+if executable('python2')
+    let g:ycm_path_to_python_interpreter = 
+                \ substitute(system('which python2'), "\n", '', '')
+endif
 
 map <F9> :YcmCompleter FixIt<CR>
 nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
