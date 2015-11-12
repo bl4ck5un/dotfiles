@@ -109,18 +109,25 @@ set tm=500
 syntax enable 
 
 if has("gui_running")
-" solarized scheme works better with GUI
-" see https://github.com/altercation/vim-colors-solarized
-let g:solarized_termcolors=256
-let g:solarized_underline=0
-set background=dark
-colorscheme solarized
+    " solarized scheme works better with GUI
+    " see https://github.com/altercation/vim-colors-solarized
+    let g:solarized_termcolors=256
+    let g:solarized_underline=0
+    set background=dark
+    colorscheme solarized
 
-" Set extra options when running in GUI mode
-set guioptions-=T
-set guioptions-=e
-set t_Co=256
-set guitablabel=%M\ %t
+    " Set extra options when running in GUI mode
+    set guioptions-=T
+    set guioptions-=e
+    set t_Co=256
+    set guitablabel=%M\ %t
+
+    if has('gui_macvim')
+        set guifont=Inconsolata:h13
+    else
+        set guifont=Inconsolata\ Medium\ 12
+
+    endif
 endif
 
 set encoding=utf8
