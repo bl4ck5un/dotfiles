@@ -30,16 +30,29 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
+"
+" Autocomplete
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'jiangmiao/auto-pairs.git'
+Plugin 'klen/python-mode'
+" 
+" Ack
 Plugin 'mileszs/ack.vim'
-Plugin 'altercation/vim-colors-solarized.git'
+"
+" Look and Feel
+Plugin 'godlygeek/tabular'
+Plugin 'bling/vim-airline'
+Plugin 'morhetz/gruvbox'
+"
+" Code browsing
 Plugin 'majutsushi/tagbar'
 Plugin 'vim-scripts/taglist.vim'
+Plugin 'scrooloose/nerdtree'
+" 
+" Git 
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'godlygeek/tabular'
-Plugin 'scrooloose/nerdcommenter'
 call vundle#end()            " required
 
 filetype plugin on
@@ -64,11 +77,7 @@ set so=5 " screen offset
 
 set wildmenu
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-else
 set wildignore+=.git\*,.hg\*,.svn\*
-endif
 
 set ruler "Always show current position
 set cmdheight=1 " Height of the command bar
@@ -105,8 +114,11 @@ set tm=500
 " -----------------------------------------------------------
 " Colors and Fonts
 " -----------------------------------------------------------
+" Font (patched with Powerline support) can be downloaded at
+" https://github.com/powerline/fonts/
 
 syntax enable 
+colorscheme gruvbox
 
 if has("gui_running")
     " solarized scheme works better with GUI
@@ -114,7 +126,6 @@ if has("gui_running")
     let g:solarized_termcolors=256
     let g:solarized_underline=0
     set background=dark
-    colorscheme solarized
 
     " Set extra options when running in GUI mode
     set guioptions-=T
@@ -123,7 +134,7 @@ if has("gui_running")
     set guitablabel=%M\ %t
 
     if has('gui_macvim')
-        set guifont=Inconsolata:h13
+        set guifont=Inconsolata\ for\ Powerline:h13
     else
         set guifont=Inconsolata\ Medium\ 12
 
@@ -190,17 +201,13 @@ nnoremap <silent> <leader>, :tabprevious<CR>
 nnoremap <silent> <leader>. :tabnext<CR>
 inoremap <silent> <leader>, <Esc>:tabprevious<CR>i
 inoremap <silent> <leader>. <Esc>:tabnext<CR>i
-
-" Let <leader>lt toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>lt :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" Switch CWD to the directory of the open buffer
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+" CS style window navigation
+nnoremap <silent> <leader>ww <C-w>k
+nnoremap <silent> <leader>ss <C-w>j
+nnoremap <silent> <leader>aa <C-w>h
+nnoremap <silent> <leader>dd <C-w>l
 
 " Specify the behavior when switching between buffers 
 try
@@ -216,31 +223,6 @@ autocmd BufReadPost *
      \ endif
 " Remember info about open buffers on close
 set viminfo^=%
-
-
-" -----------------------------------------------------------
-" Status line
-" -----------------------------------------------------------
-
-set laststatus=2
-if has('statusline')
-        function! SetStatusLineStyle()
-                let &stl="%f %y "                       .
-                        \"%([%R%M]%)"                   .
-                        \"%#StatusLineNC#%{&ff=='unix'?'':&ff.'\ format'}%*" .
-                        \"%{'$'[!&list]}"               .
-                        \"%{'~'[&pm=='']}"              .
-                        \"%="                           .
-                        \"Buf:%n %l:%c%V(%p%%)"              .
-                        \""
-        endfunc
-        call SetStatusLineStyle()
-
-        if has('title')
-                set titlestring=%t%(\ [%R%M]%)
-        endif
-endif
-
 
 " -----------------------------------------------------------
 " Editing mappings
@@ -294,7 +276,7 @@ map <leader>p :cp<cr>
 if v:version >= 700
     setlocal spell spelllang=en
     set nospell " don't check until I ask you so
-    nmap <leader>ss :set spell!<cr>
+    nmap <silent> <leader>s :set spell!<cr>
 endif
 
 
@@ -311,6 +293,30 @@ set nu
 " -----------------------------------------------------------
 " Helper functions
 " -----------------------------------------------------------
+"
+"
+
+" Don't close window, when deleting a buffer
+command! Bclose call <SID>BufcloseCloseIt()
+function! <SID>BufcloseCloseIt()
+   let l:currentBufNum = bufnr("%")
+   let l:alternateBufNum = bufnr("#")
+
+   if buflisted(l:alternateBufNum)
+     buffer #
+   else
+     bnext
+   endif
+
+   if bufnr("%") == l:currentBufNum
+     new
+   endif
+
+   if buflisted(l:currentBufNum)
+     execute("bdelete! ".l:currentBufNum)
+   endif
+endfunction
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -338,26 +344,6 @@ function! VisualSelection(direction, extra_filter) range
     let @" = l:saved_reg
 endfunction
 
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
 
 " Settings for YCM
 let g:ycm_confirm_extra_conf = 0
@@ -381,3 +367,8 @@ nnoremap <leader>m :silent make\|redraw!\|cc<CR>
 
 " Ctags
 set tags=tags;
+
+" Airline
+set laststatus=2
+let g:airline#extensions#branch#enabled = 1
+let g:airline_powerline_fonts = 1

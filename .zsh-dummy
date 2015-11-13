@@ -1,1 +1,3 @@
 source ~/dev/dotfiles/.zshrc
+export PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
