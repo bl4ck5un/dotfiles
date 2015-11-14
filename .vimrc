@@ -372,3 +372,15 @@ set tags=tags;
 set laststatus=2
 let g:airline#extensions#branch#enabled = 1
 let g:airline_powerline_fonts = 1
+
+" Auto-wrap at will
+set sr
+set tw=80
+imap <leader>b <C-O>:call AutoWrapToggle()<CR>
+function! AutoWrapToggle()
+  if &formatoptions =~ 't'
+    set fo-=t
+  else
+    set fo+=t
+  endif
+endfunction
