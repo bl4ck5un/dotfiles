@@ -104,3 +104,6 @@ alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
 # export WORKON_HOME=~/Envs
 # source ~/Library/Python/2.7/bin/virtualenvwrapper.sh 
 # source /usr/local/opt/autoenv/activate.sh
+#
+# play well with gruvbox scheme
+source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
