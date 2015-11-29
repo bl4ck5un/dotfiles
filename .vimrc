@@ -36,6 +36,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'klen/python-mode'
+Plugin 'tpope/vim-surround'
 " 
 " Ack
 Plugin 'mileszs/ack.vim'
