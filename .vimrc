@@ -35,7 +35,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'klen/python-mode'
+" Plugin 'klen/python-mode'
 " 
 " Ack
 Plugin 'mileszs/ack.vim'
