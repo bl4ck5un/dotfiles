@@ -120,13 +120,13 @@ set tm=500
 
 syntax enable 
 colorscheme gruvbox
+set background=dark
 
 if has("gui_running")
     " solarized scheme works better with GUI
     " see https://github.com/altercation/vim-colors-solarized
     let g:solarized_termcolors=256
     let g:solarized_underline=0
-    set background=dark
 
     " Set extra options when running in GUI mode
     set guioptions-=T
@@ -377,7 +377,7 @@ let g:airline_powerline_fonts = 1
 " Auto-wrap at will
 set sr
 set tw=80
-imap <leader>b <C-O>:call AutoWrapToggle()<CR>
+imap <C-o> <C-O>:call AutoWrapToggle()<CR>
 function! AutoWrapToggle()
   if &formatoptions =~ 't'
     set fo-=t
