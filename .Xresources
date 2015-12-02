@@ -1,0 +1,24 @@
+#include "./.Xresources.d/gruvbox-dark.xresources"
+#include "./.Xresources.d/gruvbox-urxvt256.xresources"
+
+
+URxvt.urgentOnBell: off
+URxvt.visualBell: off
+URxvt.iso14755: off
+URxvt.iso14755_52: off
+URxvt.meta8: true
+URxvt.depth: 32
+
+URxvt.internalBorder: 0
+URxvt.externalBorder: 0
+
+URxvt.scrollBar: off
+URxvt.saveLines: 1024
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
+URxvt.scrollTtyKeypress: true
+
+URxvt.inheritPixmap: false
+URxvt.fading: 0
+
+URxvt.font: xft:Inconsolata for Powerline:size=12
