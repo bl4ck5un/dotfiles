@@ -120,13 +120,13 @@ set tm=500
 
 syntax enable 
 colorscheme gruvbox
+set background=dark
 
 if has("gui_running")
     " solarized scheme works better with GUI
     " see https://github.com/altercation/vim-colors-solarized
     let g:solarized_termcolors=256
     let g:solarized_underline=0
-    set background=dark
 
     " Set extra options when running in GUI mode
     set guioptions-=T
