@@ -35,7 +35,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'klen/python-mode'
 Plugin 'tpope/vim-surround'
 Plugin 'lervag/vimtex'
 " 
@@ -351,6 +350,12 @@ endfunction
 
 
 " Settings for YCM
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
+    \ ]
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
