@@ -35,8 +35,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
-Plugin 'klen/python-mode'
 Plugin 'tpope/vim-surround'
+Plugin 'lervag/vimtex'
 " 
 " Ack
 Plugin 'mileszs/ack.vim'
@@ -54,6 +54,9 @@ Plugin 'scrooloose/nerdtree'
 " Git 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+"
+" Others
+Plugin 'dietsche/vim-lastplace'
 call vundle#end()            " required
 
 filetype plugin on
@@ -218,12 +221,12 @@ catch
 endtry
 
 " Remember last edit position
-autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
-" Remember info about open buffers on close
-set viminfo^=%
+" autocmd BufReadPost *
+"      \ if line("'\"") > 0 && line("'\"") <= line("$") |
+"      \   exe "normal! g`\"" |
+"      \ endif
+" " Remember info about open buffers on close
+" set viminfo^=%
 
 " -----------------------------------------------------------
 " Editing mappings
@@ -347,6 +350,12 @@ endfunction
 
 
 " Settings for YCM
+if !exists('g:ycm_semantic_triggers')
+let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = [
+    \ 're!\\[A-Za-z]*(ref|cite)[A-Za-z]*([^]]*])?{([^}]*, ?)*'
+    \ ]
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
@@ -364,7 +373,7 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 
 " Make
-nnoremap <leader>m :silent make\|redraw!\|cc<CR>
+nnoremap <leader>m :silent !make<CR>
 
 " Ctags
 set tags=tags;
