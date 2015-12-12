@@ -1,6 +1,7 @@
 [core]
     editor = vim
 	excludesfile = /Users/Fan/.gitignore_global
+	autocrlf = input
 [user]
 	name = Fan Zhang
 	email = bl4ck5unxx@gmail.com
