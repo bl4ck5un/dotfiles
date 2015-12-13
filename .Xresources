@@ -1,12 +1,10 @@
 #include "./.Xresources.d/gruvbox-dark.xresources"
 #include "./.Xresources.d/gruvbox-urxvt256.xresources"
 
-
 URxvt.urgentOnBell: off
 URxvt.visualBell: off
 URxvt.iso14755: off
 URxvt.iso14755_52: off
-URxvt.meta8: true
 URxvt.depth: 32
 
 URxvt.internalBorder: 0
@@ -21,4 +19,9 @@ URxvt.scrollTtyKeypress: true
 URxvt.inheritPixmap: false
 URxvt.fading: 0
 
-URxvt.font: xft:Inconsolata for Powerline:size=12
+URxvt.font: xft:Inconsolata for Powerline:pixelsize=17
+Xft.dpi: 96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintslight

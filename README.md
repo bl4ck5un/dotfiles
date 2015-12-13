@@ -18,9 +18,9 @@ Setup steps:
 
         sh -c $(curl -fsSL "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
 
-3. copy `.zsh-dummpy` to `~/.zshrc`. (Revised: using a wrapper of the actual `.zshrc` allows better portability)
+3. copy `.zsh-dummy` to `~/.zshrc`. (Revised: using a wrapper of the actual `.zshrc` allows better portability)
     
-        cp -f .zsh-dummp ~/.zshrc
+        cp -f .zsh-dummy ~/.zshrc
 
 4. Take immediate effective
 
@@ -62,6 +62,11 @@ Vim
         cd ~/.vim/bundle/YouCompleteMe
         brew install cmake
         ./install.py --clang-completer
+
+6. Install `ctags`:
+
+        brew install ctags
+        sudo pacman -Syu ctags
 
 
 iTerm2
