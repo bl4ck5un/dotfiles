@@ -1,0 +1,19 @@
+[Print Settings]
+cover-after=none
+print-at=now
+number-up=1
+reverse=false
+print-pages=all
+cups-InputSlot=Default
+print-at-time=
+duplex=horizontal
+cups-Duplex=DuplexNoTumble
+cups-job-sheets=none,none
+cups-job-priority=50
+default-source=Default
+collate=false
+cover-before=none
+printer=n448
+page-set=all
+cups-number-up=1
+scale=100

@@ -386,7 +386,7 @@ let g:airline_powerline_fonts = 1
 " Auto-wrap at will
 set sr
 set tw=80
-imap <leader>b <C-O>:call AutoWrapToggle()<CR>
+imap <C-o> <C-O>:call AutoWrapToggle()<CR>
 function! AutoWrapToggle()
   if &formatoptions =~ 't'
     set fo-=t
