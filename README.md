@@ -73,3 +73,19 @@ iTerm2
 ------
 
 You can import solarized color scheme if you like.
+
+X
+--
+
+1. gtk+ theming
+
+I like the Ceti-2 themes from AUR
+
+    yaourt ceti-2
+
+Then syslink the following configuration files:
+
+    ln -sf /home/fan/dev/dotfiles/.gtkrc-2.0 ~/.config/gtkrc-2.0
+    ln -sf /home/fan/dev/dotfiles/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
+
+See http://wiki.archlinux.org/index.php/GTK%2B for more details. 
