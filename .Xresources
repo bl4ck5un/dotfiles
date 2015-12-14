@@ -20,6 +20,8 @@ URxvt.inheritPixmap: false
 URxvt.fading: 0
 
 URxvt.font: xft:Inconsolata for Powerline:pixelsize=15
+URxvt.letterSpace: -1
+
 Xft.dpi: 96
 Xft.antialias: true
 Xft.rgba: rgb
