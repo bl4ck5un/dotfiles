@@ -69,6 +69,13 @@ Vim
         sudo pacman -Syu ctags
 
 
+tmux
+------
+
+1. Syslink conf
+
+    ln -sf $HOME/dev/dotfiles/.tmux.conf ~/.tmux.conf
+
 iTerm2
 ------
 
@@ -85,7 +92,7 @@ I like the Ceti-2 themes from AUR
 
 Then syslink the following configuration files:
 
-    ln -sf /home/fan/dev/dotfiles/.gtkrc-2.0 ~/.config/gtkrc-2.0
+    ln -sf /home/fan/dev/dotfiles/.gtkrc-2.0 ~/.gtkrc-2.0
     ln -sf /home/fan/dev/dotfiles/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/settings.ini
 
 See http://wiki.archlinux.org/index.php/GTK%2B for more details. 
