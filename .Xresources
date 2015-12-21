@@ -19,7 +19,8 @@ URxvt.scrollTtyKeypress: true
 URxvt.inheritPixmap: false
 URxvt.fading: 0
 
-URxvt.font: xft:Inconsolata for Powerline:pixelsize=15
+!URxvt.font: xft:Inconsolata for Powerline:pixelsize=15
+URxvt.font: xft:Monoid:pixelsize=15
 URxvt.letterSpace: -1
 
 Xft.dpi: 96
