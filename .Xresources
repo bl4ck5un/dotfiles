@@ -19,7 +19,7 @@ URxvt.scrollTtyKeypress: true
 URxvt.inheritPixmap: false
 URxvt.fading: 0
 
-URxvt.font: xft: Meslo LG S DZ for Powerline:pixelsize=16,xft: Noto Emoji
+URxvt.font: xft: Meslo LG S DZ for Powerline:pixelsize=14,xft: Noto Emoji
 URxvt.letterSpace: -1
 
 Xft.dpi: 96
