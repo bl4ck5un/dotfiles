@@ -1,7 +1,7 @@
 Config { 
 
    -- appearance
-     font =         "xft:Inconsolata for Powerline:size=11:bold:antialias=true"
+     font =         "xft:Meslo LG S DZ for Powerline:size=9:antialias=true"
    , bgColor =      "black"
    , fgColor =      "#646464"
    , position =     Top
