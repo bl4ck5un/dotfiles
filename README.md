@@ -1,8 +1,8 @@
 dotfiles
 ========
 
-Shell
------
+Zsh and Prezto
+--------------
 
 Setup steps:
 
@@ -16,11 +16,14 @@ Setup steps:
 
 2. Install oh-my-zsh:
 
-        sh -c $(curl -fsSL "https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh")
+        git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
 
-3. copy `.zsh-dummy` to `~/.zshrc`. (Revised: using a wrapper of the actual `.zshrc` allows better portability)
-    
-        cp -f .zsh-dummy ~/.zshrc
+   Then create a new Zsh configuration
+
+        setopt EXTENDED_GLOB
+        for rcfile in $HOME/dev/dotfiles/prezto; do
+            ln -s "$rcfile" "$HOME/.$rcfile"
+        done
 
 4. Take immediate effective
 

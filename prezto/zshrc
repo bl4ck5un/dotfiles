@@ -1,0 +1,15 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+# load some common setup
+source $HOME/dev/dotfiles/.zshrc
+
+# customization
+PATH=$PATH:/Users/fanz/Library/Python/2.7/bin
+PATH=$PATH:/Users/fanz/.gem/ruby/2.0.0/bin
+
+. `brew --prefix`/etc/profile.d/z.sh
+
+export PATH
