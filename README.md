@@ -20,8 +20,7 @@ Setup steps:
 
    Then create a new Zsh configuration
 
-        setopt EXTENDED_GLOB
-        for rcfile in $HOME/dev/dotfiles/prezto; do
+        for rcfile in $HOME/dev/dotfiles/prezto/*; do
             ln -s "$rcfile" "$HOME/.$rcfile"
         done
 
