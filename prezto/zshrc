@@ -10,6 +10,8 @@ source $HOME/dev/dotfiles/.zshrc
 PATH=$PATH:/Users/fanz/Library/Python/2.7/bin
 PATH=$PATH:/Users/fanz/.gem/ruby/2.0.0/bin
 
-. `brew --prefix`/etc/profile.d/z.sh
+if [[ -f $(which brew) ]]; then
+    . `brew --prefix`/etc/profile.d/z.sh
+fi
 
 export PATH

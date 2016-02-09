@@ -43,7 +43,7 @@ Plugin 'mileszs/ack.vim'
 "
 " Look and Feel
 Plugin 'godlygeek/tabular'
-Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
 Plugin 'morhetz/gruvbox'
 "
 " Code browsing
@@ -379,9 +379,8 @@ nnoremap <leader>m :silent !make -B<CR>
 set tags=tags;
 
 " Airline
-set laststatus=2
-let g:airline#extensions#branch#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline_powerline_fonts = 1
 
 " Auto-wrap at will
 set sr
@@ -394,3 +393,14 @@ function! AutoWrapToggle()
     set fo+=t
   endif
 endfunction
+
+
+" Statusline
+set laststatus=2
+set statusline=
+set statusline +=%y                "file type
+set statusline +=\ %<%F            "full path
+set statusline +=%m                "modified flag
+set statusline +=%=%5l/%L(%2p%%)             "current line
+set statusline +=%4v\              "virtual column number
+set statusline +=0x%04B\           "character under cursor
