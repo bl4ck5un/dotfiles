@@ -83,8 +83,8 @@ set wildmenu
 set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*
 
-set ruler "Always show current position
-set cmdheight=1 " Height of the command bar
+"set ruler "Always show current position
+"set cmdheight=1 " Height of the command bar
 set hid " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
@@ -155,6 +155,7 @@ set nobackup
 set nowb
 set noswapfile
 
+let g:tex_flavor = "latex"
 
 " -----------------------------------------------------------
 " Text, tab and indent related
@@ -183,7 +184,7 @@ set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap 
 
-
+set mouse=a
 " -----------------------------------------------------------
 " Moving around, tabs, windows and buffers
 " -----------------------------------------------------------
@@ -194,7 +195,6 @@ nnoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
 nnoremap ^ g^
-
 
 " Disable search highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
@@ -359,6 +359,7 @@ let g:ycm_semantic_triggers.tex = [
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
+
 
 if executable('python2')
     let g:ycm_path_to_python_interpreter = 
