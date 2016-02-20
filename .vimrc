@@ -43,7 +43,7 @@ Plugin 'mileszs/ack.vim'
 "
 " Look and Feel
 Plugin 'godlygeek/tabular'
-Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
 Plugin 'morhetz/gruvbox'
 "
 " Code browsing
@@ -83,8 +83,8 @@ set wildmenu
 set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*
 
-set ruler "Always show current position
-set cmdheight=1 " Height of the command bar
+"set ruler "Always show current position
+"set cmdheight=1 " Height of the command bar
 set hid " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
@@ -155,6 +155,7 @@ set nobackup
 set nowb
 set noswapfile
 
+let g:tex_flavor = "latex"
 
 " -----------------------------------------------------------
 " Text, tab and indent related
@@ -174,16 +175,16 @@ set textwidth=0
 set fo-=t
 
 " also comes from by http://blog.ezyang.com/2010/03/vim-textwidth/
-augroup vimrc_autocmds
-  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-  autocmd BufEnter * match OverLength /\%80v.*/
-augroup END
+" augroup vimrc_autocmds
+"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
+"  autocmd BufEnter * match OverLength /\%80v.*/
+" augroup END
 
 set autoindent "Auto indent
 set smartindent "Smart indent
 set wrap 
 
-
+set mouse=a
 " -----------------------------------------------------------
 " Moving around, tabs, windows and buffers
 " -----------------------------------------------------------
@@ -194,7 +195,6 @@ nnoremap k gk
 nnoremap 0 g0
 nnoremap $ g$
 nnoremap ^ g^
-
 
 " Disable search highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
@@ -360,6 +360,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
 
+
 if executable('python2')
     let g:ycm_path_to_python_interpreter = 
                 \ substitute(system('which python2'), "\n", '', '')
@@ -379,9 +380,8 @@ nnoremap <leader>m :silent !make -B<CR>
 set tags=tags;
 
 " Airline
-set laststatus=2
-let g:airline#extensions#branch#enabled = 1
-let g:airline_powerline_fonts = 1
+" let g:airline#extensions#branch#enabled = 1
+" let g:airline_powerline_fonts = 1
 
 " Auto-wrap at will
 set sr
@@ -394,3 +394,14 @@ function! AutoWrapToggle()
     set fo+=t
   endif
 endfunction
+
+
+" Statusline
+set laststatus=2
+set statusline=
+set statusline +=%y                "file type
+set statusline +=\ %<%F            "full path
+set statusline +=%m                "modified flag
+set statusline +=%=%5l/%L(%2p%%)             "current line
+set statusline +=%4v\              "virtual column number
+set statusline +=0x%04B\           "character under cursor

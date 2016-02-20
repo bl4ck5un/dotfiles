@@ -1,4 +1,3 @@
 source ~/dev/dotfiles/.zshrc
-PATH=$PATH:/Applications/Postgres.app/Contents/Versions/9.4/bin
-PATH=$PATH:/Users/fanz/Library/Python/2.7/bin
+PATH=$PATH
 export PATH

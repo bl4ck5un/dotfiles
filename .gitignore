@@ -1,2 +1,6 @@
 vim/bundle
 .DS_Store
+*.hi
+*.o
+*.errors
+.xmonad/xmonad-x86_64-linux
