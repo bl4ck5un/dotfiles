@@ -373,7 +373,7 @@ nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 
 " Make
-nnoremap <leader>m :silent !make<CR>
+nnoremap <leader>m :silent !make -B<CR>
 
 " Ctags
 set tags=tags;
