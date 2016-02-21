@@ -37,6 +37,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'tpope/vim-surround'
 Plugin 'lervag/vimtex'
+Plugin 'fatih/vim-go'
 " 
 " Ack
 Plugin 'mileszs/ack.vim'
