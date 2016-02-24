@@ -119,9 +119,6 @@ set tm=500
 " -----------------------------------------------------------
 " Colors and Fonts
 " -----------------------------------------------------------
-" Font (patched with Powerline support) can be downloaded at
-" https://github.com/powerline/fonts/
-
 syntax enable 
 colorscheme gruvbox
 set background=dark
@@ -156,7 +153,6 @@ set nobackup
 set nowb
 set noswapfile
 
-let g:tex_flavor = "latex"
 
 " -----------------------------------------------------------
 " Text, tab and indent related
@@ -208,12 +204,6 @@ inoremap <silent> <leader>, <Esc>:tabprevious<CR>i
 inoremap <silent> <leader>. <Esc>:tabnext<CR>i
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
-" CS style window navigation
-nnoremap <silent> <leader>ww <C-w>k
-nnoremap <silent> <leader>ss <C-w>j
-nnoremap <silent> <leader>aa <C-w>h
-nnoremap <silent> <leader>dd <C-w>l
-
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=useopen,usetab,newtab
@@ -222,16 +212,11 @@ catch
 endtry
 
 " Remember last edit position
-" autocmd BufReadPost *
-"      \ if line("'\"") > 0 && line("'\"") <= line("$") |
-"      \   exe "normal! g`\"" |
-"      \ endif
-" " Remember info about open buffers on close
-" set viminfo^=%
 
 " -----------------------------------------------------------
 " Editing mappings
 " -----------------------------------------------------------
+let g:tex_flavor = "latex"
 
 map 0 ^
 
@@ -245,10 +230,6 @@ autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
-" -----------------------------------------------------------
-" => Ack searching and cope displaying
-"    requires ack.vim - it's much better than vimgrep/grep
-" -----------------------------------------------------------
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ack after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
@@ -256,7 +237,7 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ack and put the cursor in the right position
 map <leader>g :Ack 
 
-" When you press <leader>r you can search and replace the selected text
+"" When you press <leader>r you can search and replace the selected text
 vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
@@ -271,13 +252,13 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 "   <leader>p
 "
 map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
 map <leader>p :cp<cr>
 
 
-" *Spell checking*
-" use <leader>ss to trigger spell check
+""""""""""
+" Spell checking
+"
 if v:version >= 700
     setlocal spell spelllang=en
     set nospell " don't check until I ask you so
@@ -289,8 +270,6 @@ endif
 " Misc
 " -----------------------------------------------------------
 
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
 " display lineno
 set nu
 
@@ -299,29 +278,7 @@ set nu
 " Helper functions
 " -----------------------------------------------------------
 "
-"
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
-
-   if buflisted(l:alternateBufNum)
-     buffer #
-   else
-     bnext
-   endif
-
-   if bufnr("%") == l:currentBufNum
-     new
-   endif
-
-   if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
-   endif
-endfunction
-
+"*
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
@@ -367,10 +324,6 @@ if executable('python2')
                 \ substitute(system('which python2'), "\n", '', '')
 endif
 
-map <F9> :YcmCompleter FixIt<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 
@@ -406,3 +359,7 @@ set statusline +=%m                "modified flag
 set statusline +=%=%5l/%L(%2p%%)             "current line
 set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
+
+
+"" go"
+au FileType go map <leader>r :!go run %<CR>

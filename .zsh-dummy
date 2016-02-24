@@ -1,3 +1,15 @@
 source ~/dev/dotfiles/.zshrc
+
+# customization
+PATH=$PATH:/Users/fanz/Library/Python/2.7/bin
+PATH=$PATH:/Users/fanz/.gem/ruby/2.0.0/bin
+export PATH
+
+if [[ -f $(which brew) ]]; then
+    . `brew --prefix`/etc/profile.d/z.sh
+fi
+
 PATH=$PATH
 export PATH
+
+export GOPATH=$HOME/dev/gowork
