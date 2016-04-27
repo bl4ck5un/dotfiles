@@ -171,17 +171,11 @@ set breakat=80
 set textwidth=0
 set fo-=t
 
-" also comes from by http://blog.ezyang.com/2010/03/vim-textwidth/
-" augroup vimrc_autocmds
-"  autocmd BufEnter * highlight OverLength ctermbg=darkgrey guibg=#592929
-"  autocmd BufEnter * match OverLength /\%80v.*/
-" augroup END
-
 set autoindent "Auto indent
 set smartindent "Smart indent
-set wrap 
+set nowrap 
 
-set mouse=a
+set mouse=i
 " -----------------------------------------------------------
 " Moving around, tabs, windows and buffers
 " -----------------------------------------------------------
@@ -199,7 +193,7 @@ map <silent> <leader><CR> :noh<CR>
 " mappings for managing tabs
 " tab navigation like firefox
 nnoremap <silent> <leader>, :tabprevious<CR>
-nnoremap <silent> <leader>. :tabnext<CR>
+nnoremap <silent> .. :tabnext<CR>
 inoremap <silent> <leader>, <Esc>:tabprevious<CR>i
 inoremap <silent> <leader>. <Esc>:tabnext<CR>i
 map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
@@ -340,14 +334,6 @@ set tags=tags;
 " Auto-wrap at will
 set sr
 set tw=80
-imap <C-o> <C-O>:call AutoWrapToggle()<CR>
-function! AutoWrapToggle()
-  if &formatoptions =~ 't'
-    set fo-=t
-  else
-    set fo+=t
-  endif
-endfunction
 
 
 " Statusline
@@ -363,3 +349,4 @@ set statusline +=0x%04B\           "character under cursor
 
 "" go"
 au FileType go map <leader>r :!go run %<CR>
+
