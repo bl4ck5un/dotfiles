@@ -20,13 +20,11 @@ Setup steps:
 
    Then create a new Zsh configuration
 
-        for rcfile in $HOME/dev/dotfiles/prezto/*; do
-            ln -s "$rcfile" "$HOME/.$(basename $rcfile)"
-        done
+        for rcfile in $HOME/dev/dotfiles/prezto/*; do ln -s "$rcfile" "$HOME/.$(basename $rcfile)"; done
 
 4. Create a local `zshrc` copy
 
-        ln -sf $HOME/dev/dotfiles/.zsh-dummy $HOME/.zshrc
+        cp -f $HOME/dev/dotfiles/.zsh-dummy $HOME/.zshrc
 
 4. Take immediate effective
 
@@ -73,6 +71,12 @@ Vim
 
         brew install ctags
         sudo pacman -Syu ctags
+
+
+gnome-terminal
+---------------
+
+A very good collection of color schemes is found [here](https://github.com/morhetz/gruvbox/wiki/Terminal-specific)
 
 
 tmux
