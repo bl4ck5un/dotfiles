@@ -76,7 +76,8 @@ Vim
 gnome-terminal
 ---------------
 
-A very good collection of color schemes is found [here](https://github.com/morhetz/gruvbox/wiki/Terminal-specific)
+A very good collection of color schemes is found 
+[here](https://github.com/metalelf0/gnome-terminal-colors)
 
 
 tmux
