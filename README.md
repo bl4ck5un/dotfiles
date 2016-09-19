@@ -44,10 +44,11 @@ Vim
 
         brew install vim
 
-1. Syslink `.vim/ftplugin`
+1. Syslink `.vim/ftplugin` and `.vim/plugin`
 
         mkdir ~/.vim
         ln -sf $(pwd)/vim/ftplugin ~/.vim
+        ln -sf $(pwd)/vim/plugin ~/.vim
 
 2. Install [Vundle](https://github.com/gmarik/Vundle.vim)
 
@@ -65,6 +66,7 @@ Vim
 
         cd ~/.vim/bundle/YouCompleteMe
         brew install cmake
+        sudo apt-get install build-essential cmake python-dev python3-dev
         ./install.py --clang-completer
 
 6. Install `ctags`:
@@ -80,12 +82,18 @@ A very good collection of color schemes is found
 [here](https://github.com/metalelf0/gnome-terminal-colors)
 
 
+    cd /tmp
+    git clone git@github.com:metalelf0/gnome-terminal-colors.git
+    cd gnome-terminal-colors
+    ./install.sh
+
+
 tmux
 ------
 
 1. Syslink conf
 
-    ln -sf $HOME/dev/dotfiles/.tmux.conf ~/.tmux.conf
+        ln -sf $HOME/dev/dotfiles/.tmux.conf ~/.tmux.conf
 
 iTerm2
 ------
