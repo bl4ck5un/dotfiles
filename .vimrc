@@ -44,12 +44,10 @@ Plugin 'mileszs/ack.vim'
 "
 " Look and Feel
 Plugin 'godlygeek/tabular'
-" Plugin 'bling/vim-airline'
 Plugin 'morhetz/gruvbox'
 "
 " Code browsing
 Plugin 'majutsushi/tagbar'
-Plugin 'vim-scripts/taglist.vim'
 Plugin 'scrooloose/nerdtree'
 " 
 " Git 
@@ -58,6 +56,10 @@ Plugin 'airblade/vim-gitgutter'
 "
 " Others
 Plugin 'dietsche/vim-lastplace'
+Plugin 'freitass/todo.txt-vim'
+
+" IDE
+Plugin 'bbchung/clighter'
 call vundle#end()            " required
 
 filetype plugin on
@@ -311,6 +313,9 @@ let g:ycm_semantic_triggers.tex = [
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
+let g:ycm_global_ycm_extra_conf = '~/dev/dotfiles/ycm/.ycm_extra_conf.py'
+
+nnoremap <F5> :YcmCompleter GoTo<CR>
 
 
 if executable('python2')
@@ -350,3 +355,10 @@ set statusline +=0x%04B\           "character under cursor
 "" go"
 au FileType go map <leader>r :!go run %<CR>
 
+
+"" clighter"
+let g:clighter_autostart = 1
+let g:clighter_libclang_file = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
+
+" For local replace
+nnoremap gr :%s/\<<C-r><C-w>\>/
