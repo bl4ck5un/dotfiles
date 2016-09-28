@@ -8,3 +8,5 @@ alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
 
 [[ -f "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh" ]] && \
     source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+
+setopt clobber
