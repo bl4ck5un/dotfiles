@@ -59,7 +59,7 @@ Plugin 'dietsche/vim-lastplace'
 Plugin 'freitass/todo.txt-vim'
 
 " IDE
-Plugin 'bbchung/clighter'
+" Plugin 'bbchung/Clighter8'
 call vundle#end()            " required
 
 filetype plugin on
@@ -358,7 +358,6 @@ au FileType go map <leader>r :!go run %<CR>
 
 "" clighter"
 let g:clighter_autostart = 1
-let g:clighter_libclang_file = '/usr/lib/x86_64-linux-gnu/libclang-3.8.so'
 
 " For local replace
 nnoremap gr :%s/\<<C-r><C-w>\>/
