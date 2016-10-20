@@ -49,6 +49,7 @@ Plugin 'morhetz/gruvbox'
 " Code browsing
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
+Plugin 'vim-scripts/CCTree'
 " 
 " Git 
 Plugin 'tpope/vim-fugitive'

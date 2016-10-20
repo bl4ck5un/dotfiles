@@ -1,5 +1,0 @@
-source ~/dev/dotfiles/.zshrc
-
-# customization
-PATH=/usr/local/bin:$PATH
-export PATH
