@@ -59,7 +59,7 @@ Plugin 'dietsche/vim-lastplace'
 Plugin 'freitass/todo.txt-vim'
 
 " IDE
-Plugin 'bbchung/clighter'
+" Plugin 'bbchung/Clighter8'
 call vundle#end()            " required
 
 filetype plugin on
