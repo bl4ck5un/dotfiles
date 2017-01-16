@@ -360,6 +360,7 @@ au FileType go map <leader>r :!go run %<CR>
 
 "" clighter"
 let g:clighter_autostart = 1
+let g:clighter_libclang_file = '/usr/local/opt/llvm/lib/libclang.dylib'
 
 " For local replace
 nnoremap gr :%s/\<<C-r><C-w>\>/
