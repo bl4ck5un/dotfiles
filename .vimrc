@@ -178,7 +178,8 @@ set autoindent "Auto indent
 set smartindent "Smart indent
 set nowrap 
 
-set mouse=i
+" set mouse=i
+
 " -----------------------------------------------------------
 " Moving around, tabs, windows and buffers
 " -----------------------------------------------------------
