@@ -1,6 +1,11 @@
 #!/bin/bash -e
 
-DISTRIBUTION_ID=$(lsb_release -i | awk -F ':' '{print $2}' | sed 's/^[ \t]*//g')
+if [[ $(command -v lsb_release) ]]
+then
+    DISTRIBUTION_ID=$(lsb_release -i | awk -F ':' '{print $2}' | sed 's/^[ \t]*//g')
+else
+    DISTRIBUTION_ID=$(basename $(ls -1 /etc/*-release | grep -v os) | awk -F '-' '{print $1}')
+fi
 
 case $DISTRIBUTION_ID in
 	openSUSE)
@@ -12,8 +17,13 @@ case $DISTRIBUTION_ID in
 		echo 'In ubuntu'
 		sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev
 		;;
-
+    arch)
+        echo "In Arch"
+        sudo pacman -Syu --needed cmake zsh vim git ctags
+        ;;
 	*)
+        echo "Unknown distribution $DISTRIBUTION_ID"
+        exit -1
 		;;
 esac
 
