@@ -13,7 +13,7 @@ case $DISTRIBUTION_ID in
 		sudo zypper install cmake zsh vim git ctags python-devel python3-devel
         sudo zypper install -t pattern devel_basis
 		;;
-	ubuntu)
+	Ubuntu)
 		echo 'In ubuntu'
 		sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev
 		;;
