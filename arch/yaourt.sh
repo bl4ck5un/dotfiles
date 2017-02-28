@@ -1,12 +1,8 @@
-pushd /tmp
-
 git clone https://aur.archlinux.org/package-query.git
-pushd package-query
+cd package-query
 makepkg -si
-popd
-
+cd ..
 git clone https://aur.archlinux.org/yaourt.git
-pushd yaourt
+cd yaourt
 makepkg -si
-popd
-popd
+cd ..

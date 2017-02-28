@@ -141,11 +141,11 @@ if has("gui_running")
     if has('gui_macvim')
         set guifont=Inconsolata\ for\ Powerline:h13
     else
-        set guifont=Inconsolata\ Medium\ 12
-
+        set guifont=Fira\ Mono\ for\ Powerline\ 10
     endif
 endif
 
+set t_Co=256
 set encoding=utf8
 set ffs=unix,dos,mac
 
@@ -176,7 +176,7 @@ set fo-=t
 
 set autoindent "Auto indent
 set smartindent "Smart indent
-set nowrap 
+set wrap 
 
 " set mouse=i
 
@@ -315,15 +315,8 @@ let g:ycm_semantic_triggers.tex = [
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
-let g:ycm_global_ycm_extra_conf = '~/dev/dotfiles/ycm/.ycm_extra_conf.py'
 
 nnoremap <F5> :YcmCompleter GoTo<CR>
-
-
-if executable('python2')
-    let g:ycm_path_to_python_interpreter = 
-                \ substitute(system('which python2'), "\n", '', '')
-endif
 
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
@@ -352,10 +345,6 @@ set statusline +=%m                "modified flag
 set statusline +=%=%5l/%L(%2p%%)             "current line
 set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
-
-
-"" go"
-au FileType go map <leader>r :!go run %<CR>
 
 
 "" clighter"
