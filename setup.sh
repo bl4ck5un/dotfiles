@@ -65,4 +65,8 @@ pushd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
 popd
 
+ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+
 echo 'Done. The main environment has been setup.'
+
+
