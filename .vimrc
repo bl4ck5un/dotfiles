@@ -45,10 +45,9 @@ Plugin 'dyng/ctrlsf.vim'
 
 " File navigation
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 " Code reformat
 Plugin 'rhysd/vim-clang-format'
-" Win Management
-Plugin 'weynhamz/vim-plugin-minibufexpl'
 "
 " editor
 Plugin 'morhetz/gruvbox'
@@ -57,6 +56,7 @@ Plugin 'kshenoy/vim-signature'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'sjl/gundo.vim'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'ap/vim-buftabline'
 "
 " Code browsing
 Plugin 'majutsushi/tagbar'
@@ -73,6 +73,7 @@ Plugin 'freitass/todo.txt-vim'
 
 " C++ IDE
 Plugin 'vim-scripts/a.vim'
+Plugin 'drmikehenry/vim-headerguard'
 call vundle#end()            " required
 
 filetype plugin on
@@ -146,8 +147,10 @@ nnoremap <leader>z :GundoToggle<CR>
 " -----------------------------------------------------------
 
 set so=10 " screen offset
-nnoremap j jzz
-nnoremap k kzz
+nnoremap j gjzz
+nnoremap k gkzz
+
+nnoremap Down hDown
 
 set wildmenu
 set wildignore=*.o,*~,*.pyc
@@ -174,7 +177,7 @@ set foldmethod=syntax
 set nofoldenable
 
 " fuzzyfinder (fzf) configuration
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore "*.o"'
 map <leader>t :FZF<CR>
 
 " Don't redraw while executing macros (good performance config)
@@ -272,24 +275,17 @@ map <silent> <leader><CR> :noh<CR>
 nnoremap <leader>wl <c-w><c-p>
 
 " MiniBufExpl stuff
-nnoremap <leader>bf :MBEFocus<cr>
+" nnoremap <leader>bf :MBEFocus<cr>
 
 " mappings for managing tabs
 nnoremap <silent> <leader>q :bd<CR>
-nnoremap <silent> .. :bn<CR>
-nnoremap <silent> <leader>, :bp<CR>  
-inoremap <silent> .. <Esc>:bn<CR>i
-inoremap <silent> <leader>, <Esc>:bp<CR>i
+nnoremap <silent> <C-Right> :bn<CR>
+nnoremap <silent> <C-Left> :bp<CR>
+inoremap <silent> <C-Right> <ESC>:bn<CR>i
+inoremap <silent> <C-Left> <ESC>:bp<CR>i
 map <leader>e :edit <c-r>=expand("%:p:h")<cr>/
 
-" Specify the behavior when switching between buffers 
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
-" Remember last edit position
 
 " -----------------------------------------------------------
 " Editing mappings
@@ -405,16 +401,16 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 nnoremap <leader>m :silent !make -B<CR>
 
 " Ctags
-set tags=tags;
+set tags=tags
 
 " Airline
-" let g:airline#extensions#branch#enabled = 1
-" let g:airline_powerline_fonts = 1
+"let g:airline#extensions#bufferline#enabled = 0
+"let g:airline#extensions#tabline= 1
+"let g:airline_powerline_fonts = 1
 
 " Auto-wrap at will
 set sr
 set tw=80
-
 
 " Statusline
 set laststatus=2
@@ -425,11 +421,26 @@ set statusline +=%m                "modified flag
 set statusline +=%=%5l/%L(%2p%%)             "current line
 set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
+"
+"let g:airline#extensions#tagbar#enabled = 0
+"let g:airline#extensions#ycm#enabled = 0
+"let g:airline_section_z = '%=%5l/%L(%2p%%)'
+
+"let g:airline#extensions#default#layout = [
+    "\ [ 'a', 'b', 'c' ],
+    "\ [ 'x', 'y', 'z']
+    "\ ]
 
 
 "" clighter"
 let g:clighter_autostart = 1
 let g:clighter_libclang_file = '/usr/local/opt/llvm/lib/libclang.dylib'
+
+" buftabline
+let g:buftabline_indicators = 1
+
+" doxgen syntax
+let g:load_doxygen_syntax=1
 
 " For local replace
 nnoremap gr :%s/\<<C-r><C-w>\>/
