@@ -86,8 +86,6 @@ set autoread " autoread when a file is changed from the outside
 let mapleader=","
 let g:mapleader=","
 
-nmap <leader>w :w!<CR>
-
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
