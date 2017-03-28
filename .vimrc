@@ -37,19 +37,31 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'jiangmiao/auto-pairs.git'
 Plugin 'tpope/vim-surround'
 Plugin 'lervag/vimtex'
-Plugin 'fatih/vim-go'
 " 
-" Ack
-Plugin 'mileszs/ack.vim'
+" Moving around
+Plugin 'yonchu/accelerated-smooth-scroll'
+" Search
+Plugin 'dyng/ctrlsf.vim'
+
+" File navigation
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+" Code reformat
+Plugin 'rhysd/vim-clang-format'
 "
-" Look and Feel
-Plugin 'godlygeek/tabular'
+" editor
 Plugin 'morhetz/gruvbox'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'kshenoy/vim-signature'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'sjl/gundo.vim'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'ap/vim-buftabline'
 "
 " Code browsing
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
-Plugin 'vim-scripts/CCTree'
+Plugin 'hari-rangarajan/CCTree'
 " 
 " Git 
 Plugin 'tpope/vim-fugitive'
@@ -59,8 +71,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'dietsche/vim-lastplace'
 Plugin 'freitass/todo.txt-vim'
 
-" IDE
-" Plugin 'bbchung/Clighter8'
+" C++ IDE
+Plugin 'vim-scripts/a.vim'
+Plugin 'drmikehenry/vim-headerguard'
 call vundle#end()            " required
 
 filetype plugin on
@@ -73,23 +86,78 @@ set autoread " autoread when a file is changed from the outside
 let mapleader=","
 let g:mapleader=","
 
-nmap <leader>w :w!<CR>
-nmap <leader>q :x<CR>
-inoremap <leader>q :wq<CR>
+" indent guide
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+
+" tagbar
+nnoremap <Leader>ilt :TagbarToggle<CR> 
+let tagbar_width=32 
+let g:tagbar_compact=1
+let g:tagbar_type_cpp = {
+    \ 'kinds' : [
+         \ 'c:classes:0:1',
+         \ 'd:macros:0:1',
+         \ 'e:enumerators:0:0', 
+         \ 'f:functions:0:1',
+         \ 'g:enumeration:0:1',
+         \ 'l:local:0:1',
+         \ 'm:members:0:1',
+         \ 'n:namespaces:0:1',
+         \ 'p:functions_prototypes:0:1',
+         \ 's:structs:0:1',
+         \ 't:typedefs:0:1',
+         \ 'u:unions:0:1',
+         \ 'v:global:0:1',
+         \ 'x:external:0:1'
+     \ ],
+     \ 'sro'        : '::',
+     \ 'kind2scope' : {
+         \ 'g' : 'enum',
+         \ 'n' : 'namespace',
+         \ 'c' : 'class',
+         \ 's' : 'struct',
+         \ 'u' : 'union'
+     \ },
+     \ 'scope2kind' : {
+         \ 'enum'      : 'g',
+         \ 'namespace' : 'n',
+         \ 'class'     : 'c',
+         \ 'struct'    : 's',
+         \ 'union'     : 'u'
+     \ }
+\ }
+
+
+nmap <F2> :NERDTreeToggle<cr>
+nmap <F8> :TagbarToggle<CR>
+let g:CCTreeKeyToggleWindow = '<leader>cct' 
+
+" ctrlsf
+nnoremap <leader>ack :CtrlSF<CR>
+
+" gundo
+nnoremap <leader>z :GundoToggle<CR>
 
 " -----------------------------------------------------------
 " user interface
 " -----------------------------------------------------------
 
-set so=5 " screen offset
+set so=10 " screen offset
+nnoremap j gjzz
+nnoremap k gkzz
+
+nnoremap Down hDown
 
 set wildmenu
 set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*
+set cursorline
 
 "set ruler "Always show current position
 "set cmdheight=1 " Height of the command bar
-set hid " A buffer becomes hidden when it is abandoned
+set hidden " A buffer becomes hidden when it is abandoned
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
@@ -100,6 +168,15 @@ set ignorecase
 set smartcase
 set hlsearch
 set incsearch 
+
+" folding
+"
+set foldmethod=syntax
+set nofoldenable
+
+" fuzzyfinder (fzf) configuration
+let $FZF_DEFAULT_COMMAND = 'ag -g "" --ignore "*.o"'
+map <leader>t :FZF<CR>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
@@ -183,33 +260,30 @@ set wrap
 " -----------------------------------------------------------
 " Moving around, tabs, windows and buffers
 " -----------------------------------------------------------
-
-" Treat long lines as break lines (useful when moving around in them)
-nnoremap j gj
-nnoremap k gk
-nnoremap 0 g0
-nnoremap $ g$
-nnoremap ^ g^
+"
+noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " Disable search highlight when <leader><CR> is pressed
 map <silent> <leader><CR> :noh<CR>
 
+" Jump back to the last access window
+nnoremap <leader>wl <c-w><c-p>
+
+" MiniBufExpl stuff
+" nnoremap <leader>bf :MBEFocus<cr>
+
 " mappings for managing tabs
-" tab navigation like firefox
-nnoremap <silent> <leader>, :tabprevious<CR>
-nnoremap <silent> .. :tabnext<CR>
-inoremap <silent> <leader>, <Esc>:tabprevious<CR>i
-inoremap <silent> <leader>. <Esc>:tabnext<CR>i
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+nnoremap <silent> <leader>q :bd<CR>
+nnoremap <silent> <C-Right> :bn<CR>
+nnoremap <silent> <C-Left> :bp<CR>
+inoremap <silent> <C-Right> <ESC>:bn<CR>i
+inoremap <silent> <C-Left> <ESC>:bp<CR>i
+map <leader>e :edit <c-r>=expand("%:p:h")<cr>/
 
-" Specify the behavior when switching between buffers 
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
 
-" Remember last edit position
 
 " -----------------------------------------------------------
 " Editing mappings
@@ -316,7 +390,7 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_show_diagnostics_ui = 1
 let g:ycm_server_keep_logfiles = 1
 
-nnoremap <F5> :YcmCompleter GoTo<CR>
+nnoremap <leader>go :YcmCompleter GoTo<CR>
 
 " AutoPairs
 let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
@@ -325,16 +399,16 @@ let g:AutoPairs = {'(':')', '[':']', '{':'}',"'":"'",'"':'"'}
 nnoremap <leader>m :silent !make -B<CR>
 
 " Ctags
-set tags=tags;
+set tags=tags
 
 " Airline
-" let g:airline#extensions#branch#enabled = 1
-" let g:airline_powerline_fonts = 1
+"let g:airline#extensions#bufferline#enabled = 0
+"let g:airline#extensions#tabline= 1
+"let g:airline_powerline_fonts = 1
 
 " Auto-wrap at will
 set sr
 set tw=80
-
 
 " Statusline
 set laststatus=2
@@ -345,11 +419,26 @@ set statusline +=%m                "modified flag
 set statusline +=%=%5l/%L(%2p%%)             "current line
 set statusline +=%4v\              "virtual column number
 set statusline +=0x%04B\           "character under cursor
+"
+"let g:airline#extensions#tagbar#enabled = 0
+"let g:airline#extensions#ycm#enabled = 0
+"let g:airline_section_z = '%=%5l/%L(%2p%%)'
+
+"let g:airline#extensions#default#layout = [
+    "\ [ 'a', 'b', 'c' ],
+    "\ [ 'x', 'y', 'z']
+    "\ ]
 
 
 "" clighter"
 let g:clighter_autostart = 1
 let g:clighter_libclang_file = '/usr/local/opt/llvm/lib/libclang.dylib'
+
+" buftabline
+let g:buftabline_indicators = 1
+
+" doxgen syntax
+let g:load_doxygen_syntax=1
 
 " For local replace
 nnoremap gr :%s/\<<C-r><C-w>\>/
