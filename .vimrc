@@ -139,7 +139,7 @@ if has("gui_running")
     set guitablabel=%M\ %t
 
     if has('gui_macvim')
-        set guifont=Inconsolata\ for\ Powerline:h13
+        set guifont=Inconsolata:h14
     else
         set guifont=Fira\ Mono\ for\ Powerline\ 10
     endif

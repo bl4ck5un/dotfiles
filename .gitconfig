@@ -4,7 +4,8 @@
 	autocrlf = input
 [user]
 	name = Fan Zhang
-	email = bl4ck5unxx@gmail.com
+	email = fanz@linux.com
+	signingkey = 24A42A7E28669CF4
 
 [color]
     ui = auto
@@ -12,3 +13,5 @@
 	st = status
 [push]
 	default = simple
+[merge]
+	tool = vimdiff
