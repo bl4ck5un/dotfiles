@@ -279,9 +279,12 @@ nnoremap <leader>wl <c-w><c-p>
 nnoremap <silent> <leader>q :bd<CR>
 nnoremap <silent> <C-Right> :bn<CR>
 nnoremap <silent> <C-Left> :bp<CR>
+nnoremap <silent> .. :bn<CR>
+nnoremap <silent> ,, :bp<CR>
 inoremap <silent> <C-Right> <ESC>:bn<CR>i
 inoremap <silent> <C-Left> <ESC>:bp<CR>i
 map <leader>e :edit <c-r>=expand("%:p:h")<cr>/
+map <leader>w :w!<cr>
 
 
 
