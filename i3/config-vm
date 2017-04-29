@@ -2,7 +2,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 font pango:Noto Sans CJK SC Regular 10
@@ -155,10 +155,13 @@ bindsym $mod+r mode "resize"
 # =======
 
 # wallpaper
+exec --no-startup-id feh --bg-fill /home/fanz/Pictures/glacier-869593_1920.jpg
+exec --no-startup-id xinput --disable 'SynPS/2 Synaptics TouchPad'
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id nm-applet
-exec --no-startup-id vmware-user-suid-wrapper
-exec --no-startup-id xrandr --dpi 192
+exec --no-startup-id xautolock -time 5 -locker i3lock -e -notify 30 -notifier "notify-send -u criticl -t 10000 -- 'LOCKING screen in 30 seconds'"
+exec --no-startup-id fcitx
+
 
 # BAR
 # ===
@@ -186,3 +189,18 @@ bar {
 # ===========
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
+
+# Audio
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness#
+
+# Suspend
+# bindsym $mod+L exec --no-startup-id i3lock
+bindsym $mod+L exec --no-startup-id i3lock -e && systemctl suspend
+

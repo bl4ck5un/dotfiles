@@ -120,6 +120,8 @@ Plug 'racer-rust/vim-racer'
 " Rust.vim
 Plug 'rust-lang/rust.vim'
 
+" neomake
+Plug 'neomake/neomake'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -400,40 +402,42 @@ endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
-    nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap <silent> <leader>e :FZF -m<CR>
 
-    " snippets
-    let g:UltiSnipsExpandTrigger="<tab>"
-    let g:UltiSnipsJumpForwardTrigger="<tab>"
-    let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-    let g:UltiSnipsEditSplit="vertical"
+" snippets
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
 
-    " syntastic
-    let g:syntastic_always_populate_loc_list=1
-    let g:syntastic_error_symbol='✗'
-    let g:syntastic_warning_symbol='⚠'
-    let g:syntastic_style_error_symbol = '✗'
-    let g:syntastic_style_warning_symbol = '⚠'
-    let g:syntastic_auto_loc_list=1
-    let g:syntastic_aggregate_errors = 1
+" syntastic
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='⚠'
+let g:syntastic_style_error_symbol = '✗'
+let g:syntastic_style_warning_symbol = '⚠'
+let g:syntastic_aggregate_errors = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
-    " Tagbar
-    nmap <silent> <F4> :TagbarToggle<CR>
-    let g:tagbar_autofocus = 1
+" Tagbar
+nmap <silent> <F4> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
 
-    " Disable visualbell
-    set noerrorbells visualbell t_vb=
-    if has('autocmd')
-      autocmd GUIEnter * set visualbell t_vb=
-    endif
+" Disable visualbell
+set noerrorbells visualbell t_vb=
+if has('autocmd')
+  autocmd GUIEnter * set visualbell t_vb=
+endif
 
-    "" Copy/Paste/Cut
-    if has('unnamedplus')
-      set clipboard=unnamed,unnamedplus
-    endif
+"" Copy/Paste/Cut
+if has('unnamedplus')
+  set clipboard=unnamed,unnamedplus
+endif
 
-    noremap YY "+y<CR>
-    noremap <leader>p "+gP<CR>
+noremap YY "+y<CR>
+noremap <leader>p "+gP<CR>
 noremap XX "+x<CR>
 
 if has('macunix')
@@ -658,3 +662,4 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+let g:neomake_cpp_enabled_markers = ['clangtidy']
