@@ -39,10 +39,9 @@ Plug 'vim-scripts/CSApprox'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
-Plug 'sheerun/vim-polyglot'
+Plug 'lervag/vimtex'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -234,7 +233,6 @@ endif
 
 " vim-airline
 let g:airline_theme = 'powerlineish'
-let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
@@ -391,15 +389,6 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
 
-" syntastic
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='⚠'
-let g:syntastic_style_error_symbol = '✗'
-let g:syntastic_style_warning_symbol = '⚠'
-let g:syntastic_auto_loc_list=1
-let g:syntastic_aggregate_errors = 1
-
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
@@ -493,17 +482,10 @@ let g:jedi#show_call_signatures = "0"
 let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
 
-" syntastic
-let g:syntastic_python_checkers=['python', 'flake8']
-
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
 
 " Syntax highlight
-" Default highlight is better than polyglot
-let g:polyglot_disabled = ['python']
-let python_highlight_all = 1
-
 
 "*****************************************************************************
 "*****************************************************************************
