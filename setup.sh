@@ -47,21 +47,17 @@ done
 cp -f $DOTFILE_ROOT/.zsh-dummy $HOME/.zshrc
 
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
+
+# vim
+rm -rf ~/.vim
 mkdir -p ~/.vim
 ln -sf $(pwd)/vim/ftplugin ~/.vim
 ln -sf $(pwd)/vim/plugin ~/.vim
-if [[ -d ~/.vim/bundle/Vundle.vim ]]
-then
-    pushd ~/.vim/bundle/Vundle.vim/
-    git pull
-    popd
-else
-    git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-fi
 ln -sf $(pwd)/.vimrc ~/.vimrc
-vim +PluginInstall +qall
 
-pushd ~/.vim/bundle/YouCompleteMe
+vim +PlugIn +qall
+
+pushd ~/.vim/plugged/YouCompleteMe
 ./install.py --clang-completer
 popd
 
