@@ -11,21 +11,22 @@ fi
 case $DISTRIBUTION_ID in
 	openSUSE)
 		echo 'In openSUSE'
-		sudo zypper install cmake zsh vim git ctags python-devel python3-devel
+		sudo zypper install cmake zsh vim git ctags python-devel python3-devel wget curl
         sudo zypper install -t pattern devel_basis
 		;;
 	Ubuntu | neon)
 		echo 'In Ubuntu | Neon'
-		sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev
+		sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev \
+            wget curl
 		;;
     arch)
         echo "In Arch"
-        sudo pacman -Syu --needed cmake zsh vim git ctags
+        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl
         ;;
     Fedora)
         echo "In Fedora"
         sudo dnf install @development-tools cmake zsh vim git ctags python-devel python3-devel \
-            gcc-c++ gcc
+            gcc-c++ gcc wget curl
         ;;
 	*)
         echo "Unknown distribution $DISTRIBUTION_ID"
