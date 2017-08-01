@@ -1,6 +1,8 @@
 #!/bin/bash -e
 
-if [ $(command -v lsb_release) ]; then
+if [ $(uname -s) == 'Darwin' ]; then
+    DISTRIBUTION_ID='macOS'
+elif [ $(command -v lsb_release) ]; then
     DISTRIBUTION_ID=$(lsb_release -i | awk -F ':' '{print $2}' | sed 's/^[ \t]*//g')
 elif [ -f /etc/system-release ]; then
     DISTRIBUTION_ID=$(cat /etc/system-release | awk '{print $1}')
@@ -9,16 +11,16 @@ else
 fi
 
 case $DISTRIBUTION_ID in
-	openSUSE)
-		echo 'In openSUSE'
-		sudo zypper install cmake zsh vim git ctags python-devel python3-devel wget curl
+    openSUSE)
+        echo 'In openSUSE'
+        sudo zypper install cmake zsh vim git ctags python-devel python3-devel wget curl
         sudo zypper install -t pattern devel_basis
-		;;
-	Ubuntu | neon)
-		echo 'In Ubuntu | Neon'
-		sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev \
+        ;;
+    Ubuntu | neon)
+        echo 'In Ubuntu | Neon'
+        sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev \
             wget curl
-		;;
+        ;;
     arch)
         echo "In Arch"
         sudo pacman -Syu --needed cmake zsh vim git ctags wget curl
@@ -28,10 +30,14 @@ case $DISTRIBUTION_ID in
         sudo dnf install @development-tools cmake zsh vim git ctags python-devel python3-devel \
             gcc-c++ gcc wget curl
         ;;
-	*)
+    macOS)
+        echo "In macOS"
+        brew install cmake vim macvim
+        ;;
+    *)
         echo "Unknown distribution $DISTRIBUTION_ID"
         exit -1
-		;;
+        ;;
 esac
 
 DOTFILE_ROOT=`pwd`
@@ -58,12 +64,6 @@ ln -sf $(pwd)/.vimrc ~/.vimrc
 
 vim +PlugIn +qall
 
-pushd ~/.vim/plugged/YouCompleteMe
-./install.py --clang-completer
-popd
-
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
 
 echo 'Done. The main environment has been setup.'
-
-
