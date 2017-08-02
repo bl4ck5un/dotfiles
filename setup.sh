@@ -47,7 +47,7 @@ ZPREZTO_ROOT=${ZDOTDIR:-$HOME}/.zprezto
 [[ -d $ZPREZTO_ROOT ]] && rm -rf $ZPREZTO_ROOT
 git clone --recursive https://github.com/sorin-ionescu/prezto.git $ZPREZTO_ROOT
 
-for rcfile in $DOTFILE_ROOT/prezto/*; do 
+for rcfile in $DOTFILE_ROOT/prezto/*; do
     ln -sf "$rcfile" "$HOME/.$(basename $rcfile)"
 done
 
