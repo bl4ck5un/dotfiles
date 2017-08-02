@@ -11,3 +11,6 @@ alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
 
 setopt clobber
 export TERM=xterm-256color
+
+RUST_INIT=$HOME/.cargo/env
+test -f $RUST_INIT && source $RUST_INIT
