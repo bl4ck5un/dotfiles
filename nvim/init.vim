@@ -72,10 +72,8 @@ Plug 'Valloric/YouCompleteMe'
 "" Custom bundles
 "*****************************************************************************
 
-" c
+" c/c++
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'ludwig/split-manpage.vim'
-Plug 'vim-scripts/FSwitch'
 
 " https://github.com/google/vim-codefmt
 " Add maktaba and codefmt to the runtimepath.
