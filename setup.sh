@@ -55,7 +55,7 @@ for rcfile in $(find $ZPREZTO_CONF_DIR -name 'z*'); do
 done
 
 # copy over the config files
-cp -f $DOTFILE_ROOT/.zsh-dummy $HOME/.zshrc
+cp --remove-destination $DOTFILE_ROOT/.zsh-dummy $HOME/.zshrc
 ln -sf $DOTFILE_ROOT/prezto/zpreztorc $HOME/.zpreztorc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
