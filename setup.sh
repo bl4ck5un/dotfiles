@@ -42,28 +42,22 @@ esac
 
 DOTFILE_ROOT=`pwd`
 
-#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+# install prezto
+# https://github.com/sorin-ionescu/prezto
 ZPREZTO_ROOT=${ZDOTDIR:-$HOME}/.zprezto
 [[ -d $ZPREZTO_ROOT ]] && rm -rf $ZPREZTO_ROOT
 git clone --recursive https://github.com/sorin-ionescu/prezto.git $ZPREZTO_ROOT
 
-for rcfile in $DOTFILE_ROOT/prezto/*; do
-    ln -sf "$rcfile" "$HOME/.$(basename $rcfile)"
+ZPREZTO_CONF_DIR="${ZDOTDIR:-$HOME}/.zprezto/runcoms/"
+for rcfile in $(find $ZPREZTO_CONF_DIR -name 'z*'); do
+    echo $rcfile;
+    ln -sf "$rcfile" "${ZDOTDIR:-$HOME}/.$(basename $rcfile)"
 done
 
+# copy over the config files
 cp -f $DOTFILE_ROOT/.zsh-dummy $HOME/.zshrc
-
+ln -sf $DOTFILE_ROOT/prezto/zpreztorc $HOME/.zpreztorc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
-
-# vim
-rm -rf ~/.vim
-mkdir -p ~/.vim
-ln -sf $(pwd)/vim/ftplugin ~/.vim
-ln -sf $(pwd)/vim/plugin ~/.vim
-ln -sf $(pwd)/.vimrc ~/.vimrc
-
-vim +PlugIn +qall
-
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
 
 echo 'Done. The main environment has been setup.'

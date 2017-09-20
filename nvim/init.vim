@@ -57,12 +57,10 @@ if v:version >= 704
   "" Snippets
   Plug 'SirVer/ultisnips'
 endif
-
 Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'tomasr/molokai'
-Plug 'arakashic/chromatica.nvim'
 
 "" Completer
 Plug 'ervandew/supertab'
@@ -74,6 +72,7 @@ Plug 'Valloric/YouCompleteMe'
 
 " c/c++
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
+Plug 'arakashic/chromatica.nvim', {'for': ['c', 'cpp']}
 
 " https://github.com/google/vim-codefmt
 " Add maktaba and codefmt to the runtimepath.
@@ -217,6 +216,7 @@ let g:airline_theme = 'powerlineish'
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
 let g:airline_skip_empty_sections = 1
 
 "*****************************************************************************
