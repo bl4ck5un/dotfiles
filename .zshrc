@@ -10,3 +10,7 @@ alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
     source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
 setopt clobber
+export TERM=xterm-256color
+
+RUST_INIT=$HOME/.cargo/env
+test -f $RUST_INIT && source $RUST_INIT
