@@ -403,6 +403,7 @@ augroup END
 
 " LaTeX
 let g:tex_conceal = ""
+let g:tex_flavor = "latex"
 
 " vimtex
 let g:vimtex_view_general_viewer = 'okular'
