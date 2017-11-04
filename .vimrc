@@ -84,6 +84,9 @@ Plug 'bbchung/clighter8', {'for': ['c', 'cpp']}
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'ludwig/split-manpage.vim'
 
+" Solidity
+Plug 'tomlion/vim-solidity'
+
 
 " javascript
 "" Javascript Bundle

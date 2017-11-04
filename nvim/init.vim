@@ -60,10 +60,12 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+Plug 'cespare/vim-toml'
+Plug 'maralla/vim-toml-enhance'
+
 
 "" Completer
-Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
 
 "*****************************************************************************
@@ -73,6 +75,9 @@ Plug 'Valloric/YouCompleteMe'
 " c/c++
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
 Plug 'arakashic/chromatica.nvim', {'for': ['c', 'cpp']}
+
+" rust
+Plug 'rust-lang/rust.vim'
 
 " https://github.com/google/vim-codefmt
 " Add maktaba and codefmt to the runtimepath.
@@ -88,6 +93,10 @@ Plug 'google/vim-glaive'
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+
+" TeX
+Plug 'lervag/vimtex'
+
 
 
 "*****************************************************************************
@@ -163,7 +172,9 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  colorscheme gruvbox
+  set background=dark    " Setting dark mode
+  let g:gruvbox_contrast_dark = 'hard'
 endif
 
 set mousemodel=popup
@@ -330,13 +341,8 @@ nnoremap <silent> <S-t> :tabnew<CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
-
 " better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsExpandTrigger = "<C-j>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
@@ -394,6 +400,15 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
+
+" LaTeX
+let g:tex_conceal = ""
+let g:tex_flavor = "latex"
+
+" vimtex
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+let g:vimtex_view_general_options_latexmk = '--unique'
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
@@ -460,3 +475,10 @@ endif
 
 let g:chromatica#libclang_path='/usr/lib/llvm-4.0/lib/libclang.so'
 let g:chromatica#enable_at_startup=1
+
+" ycm
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
