@@ -406,9 +406,17 @@ let g:tex_conceal = ""
 let g:tex_flavor = "latex"
 
 " vimtex
-let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-let g:vimtex_view_general_options_latexmk = '--unique'
+"
+if has("unix")
+  let s:uname = system("uname -s")
+  if s:uname == "Darwin\n"
+    let g:vimtex_view_general_viewer = 'skim'
+  else
+    let g:vimtex_view_general_viewer = 'okular'
+    let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+    let g:vimtex_view_general_options_latexmk = '--unique'
+  endif
+endif
 
 " jedi-vim
 let g:jedi#popup_on_dot = 0
