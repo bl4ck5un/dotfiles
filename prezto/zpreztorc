@@ -38,6 +38,11 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'prompt'
 
+# autosuggestions
+#
+
+zstyle ':prezto:module:autosuggestions' color 'yes'
+
 #
 # Autosuggestions
 #
