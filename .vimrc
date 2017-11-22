@@ -73,7 +73,7 @@ endif
 Plug 'honza/vim-snippets'
 
 "" Color
-Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 Plug 'bbchung/clighter8', {'for': ['c', 'cpp']}
 
 "*****************************************************************************
@@ -181,7 +181,9 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme molokai
+  colorscheme gruvbox
+  set background=dark    " Setting dark mode
+  let g:gruvbox_contrast_dark = 'hard'
 endif
 
 set mousemodel=popup
