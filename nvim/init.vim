@@ -490,3 +490,7 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+" cscope
+" Read: https://neovim.io/doc/user/if_cscop.html
+nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
