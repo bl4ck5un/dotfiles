@@ -1,5 +1,5 @@
-#include "./.Xresources.d/gruvbox-dark.xresources"
-#include "./.Xresources.d/gruvbox-urxvt256.xresources"
+#include ".Xresources.d/gruvbox-dark.xresources"
+#include ".Xresources.d/gruvbox-urxvt256.xresources"
 
 URxvt.urgentOnBell: off
 URxvt.visualBell: off
@@ -19,7 +19,7 @@ URxvt.scrollTtyKeypress: true
 URxvt.inheritPixmap: false
 URxvt.fading: 0
 
-URxvt.font: xft: Meslo LG S DZ for Powerline:pixelsize=14,xft: Noto Emoji
+URxvt.font: xft:Inconsolata,xft:Noto Sans CJK SC Regular
 URxvt.letterSpace: -1
 
 Xft.dpi: 96

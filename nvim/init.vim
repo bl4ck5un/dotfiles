@@ -74,7 +74,6 @@ Plug 'Valloric/YouCompleteMe'
 
 " c/c++
 Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-Plug 'arakashic/chromatica.nvim', {'for': ['c', 'cpp']}
 
 " rust
 Plug 'rust-lang/rust.vim'
@@ -480,9 +479,6 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
-let g:chromatica#libclang_path='/usr/lib/llvm-4.0/lib/libclang.so'
-let g:chromatica#enable_at_startup=1
 
 " ycm
 if !exists('g:ycm_semantic_triggers')
