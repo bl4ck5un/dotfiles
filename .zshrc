@@ -49,3 +49,5 @@ test -f $RUST_ENV && source $RUST_ENV
 test -d $CARGO_BIN && export PATH=$PATH:$CARGO_BIN
 
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
+
+source ${SGX_SDK:-"/opt/intel/sgxsdk"}/environment
