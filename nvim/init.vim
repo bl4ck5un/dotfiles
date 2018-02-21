@@ -5,10 +5,8 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
+let g:vim_bootstrap_editor = 'nvim'
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
-
-let g:vim_bootstrap_langs = "c,python"
-let g:vim_bootstrap_editor = "nvim"				" nvim or vim
 
 if !filereadable(vimplug_exists)
   if !executable("curl")
@@ -38,7 +36,6 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar'
-Plug 'Yggdroot/indentLine'
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
@@ -61,9 +58,10 @@ Plug 'honza/vim-snippets'
 
 "" Color
 Plug 'morhetz/gruvbox'
+
+"" vim-toml
 Plug 'cespare/vim-toml'
 Plug 'maralla/vim-toml-enhance'
-
 
 "" Completer
 Plug 'Valloric/YouCompleteMe'
@@ -72,34 +70,14 @@ Plug 'Valloric/YouCompleteMe'
 "" Custom bundles
 "*****************************************************************************
 
-" c/c++
-Plug 'vim-scripts/c.vim', {'for': ['c', 'cpp']}
-
 " rust
 Plug 'rust-lang/rust.vim'
 
-" https://github.com/google/vim-codefmt
-" Add maktaba and codefmt to the runtimepath.
-" (The latter must be installed before it can be used.)
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-" Also add Glaive, which is used to configure codefmt's maktaba flags. See
-" `:help :Glaive` for usage.
-Plug 'google/vim-glaive'
-
-
 " python
-"" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 
 " TeX
 Plug 'lervag/vimtex'
-
-
-
-"*****************************************************************************
-"*****************************************************************************
 
 "" Include user's extra bundle
 if filereadable(expand("~/.config/nvim/local_bundles.vim"))
@@ -107,10 +85,12 @@ if filereadable(expand("~/.config/nvim/local_bundles.vim"))
 endif
 
 call plug#end()
-
 " Required:
 filetype plugin indent on
 
+"*****************************************************************************
+"" End of Plug List
+"*****************************************************************************
 
 "*****************************************************************************
 "" Basic Setup
@@ -390,6 +370,12 @@ vnoremap K :m '<-2<CR>gv=gv
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
+"
+" ycm
+if !exists('g:ycm_semantic_triggers')
+    let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " python
 " vim-python
@@ -479,12 +465,6 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
-" ycm
-if !exists('g:ycm_semantic_triggers')
-    let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
 " cscope
 " Read: https://neovim.io/doc/user/if_cscop.html

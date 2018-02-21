@@ -41,5 +41,11 @@ fo() {
 setopt clobber
 export TERM=xterm-256color
 
-RUST_INIT=$HOME/.cargo/env
-test -f $RUST_INIT && source $RUST_INIT
+RUST_ENV=$HOME/.cargo/env
+CARGO_BIN=$HOME/.cargo/bin
+
+
+test -f $RUST_ENV && source $RUST_ENV
+test -d $CARGO_BIN && export PATH=$PATH:$CARGO_BIN
+
+export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
