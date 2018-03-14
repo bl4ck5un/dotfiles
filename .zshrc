@@ -44,10 +44,10 @@ export TERM=xterm-256color
 RUST_ENV=$HOME/.cargo/env
 CARGO_BIN=$HOME/.cargo/bin
 
-
 test -f $RUST_ENV && source $RUST_ENV
 test -d $CARGO_BIN && export PATH=$PATH:$CARGO_BIN
 
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 
-source ${SGX_SDK:-"/opt/intel/sgxsdk"}/environment
+SGX_SDK=${SGX_SDK:-"/opt/intel/sgxsdk"}
+test -d $SGX_SDK && source $SGX_SDK/environment
