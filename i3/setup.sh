@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/sh +ex
 
 mkdir -p $HOME/.config/i3
 ln -sf $(pwd)/config.base $HOME/.config/i3
