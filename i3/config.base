@@ -149,7 +149,9 @@ bindsym $mod+r mode "resize"
 # =======
 
 # wallpaper
-exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+exec --no-startup-id pasystray
+exec --no-startup-id nm-applet
 
 # BAR
 # ===
