@@ -397,9 +397,9 @@ if has("unix")
   if s:uname == "Darwin\n"
     let g:vimtex_view_general_viewer = 'skim'
   else
-    let g:vimtex_view_general_viewer = 'okular'
-    let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-    let g:vimtex_view_general_options_latexmk = '--unique'
+    let g:vimtex_view_general_viewer = 'atril'
+    "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
+    "let g:vimtex_view_general_options_latexmk = '--unique'
   endif
 endif
 
@@ -470,3 +470,10 @@ endif
 " Read: https://neovim.io/doc/user/if_cscop.html
 nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
 nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
+
+" long line navigation made easy
+nnoremap k gk
+nnoremap j gj
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap ^ g^
