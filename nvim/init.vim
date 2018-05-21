@@ -395,7 +395,7 @@ let g:tex_flavor = "latex"
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
-    let g:vimtex_view_general_viewer = 'skim'
+    let g:vimtex_view_general_viewer = 'skimpdf'
   else
     let g:vimtex_view_general_viewer = 'atril'
     "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'

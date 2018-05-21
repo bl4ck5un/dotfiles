@@ -1,7 +1,8 @@
 #!/bin/bash
 
-
-sudo apt-get install --yes python-dev python-pip python3-dev python3-pip neovim
+command -v apt-get && {
+    sudo apt-get install --yes python-dev python-pip python3-dev python3-pip neovim
+}
 
 pip2 install --user -U neovim
 pip3 install --user -U neovim
