@@ -1,4 +1,5 @@
-two steps
-1) config.sh
-2) X/setup.sh
+Steps
 
+1) config.sh
+2) `./j4-make-config gruvbox` (or any other theme)
+3) X/setup.sh
