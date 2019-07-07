@@ -132,7 +132,7 @@ bindsym $mod+r mode "resize"
 # =======
 
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-# exec --no-startup-id xscreensaver -no-splash
+exec --no-startup-id xscreensaver -no-splash
 # exec --no-startup-id fcitx
 # exec --no-startup-id pasystray
 # exec --no-startup-id nm-applet

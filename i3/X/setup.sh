@@ -13,3 +13,4 @@ link_to_home() {
 
 link_to_home .Xresources
 link_to_home .xinitrc
+link_to_home .xprofile
