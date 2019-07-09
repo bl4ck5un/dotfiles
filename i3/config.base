@@ -137,7 +137,7 @@ exec --no-startup-id xscreensaver
 # exec --no-startup-id pasystray
 # exec --no-startup-id nm-applet
 # exec --no-startup-id blueman-applet
-# exec_always --no-startup-id gnome-power-manager
+exec_always --no-startup-id xfce4-power-manager
 exec --no-startup-id vmware-user
 
 # BAR
@@ -159,7 +159,8 @@ bar {
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
-bindsym $mod+Shift+L exec xscreensaver-command -lock
+# bindsym $mod+Shift+L exec xscreensaver-command -lock
+bindsym $mod+Shift+L exec xsecurelock
 
 # rofi
 bindsym $sup+space exec rofi -show window
