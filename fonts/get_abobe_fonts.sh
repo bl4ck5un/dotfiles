@@ -48,4 +48,4 @@ for lang in "SC" "TC" "J" "K"; do
     download_from_zip $url
 done
 
-fc-cache -fv $FONT_HOME
+fc-cache -fv $ADOBE_FONT_HOME
