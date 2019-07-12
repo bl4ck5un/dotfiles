@@ -105,7 +105,7 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+# bindsym $mod+Shift+E exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -175,3 +175,23 @@ bindsym $sup+space exec rofi -show window
 # bindsym XF86MonBrightnessUp exec light -A 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
 # decrease screen brightness
 # bindsym XF86MonBrightnessDown exec light -U 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
+#
+
+# taken from https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
+set $Locker xsecurelock && sleep 1
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+Pause mode "$mode_system"
