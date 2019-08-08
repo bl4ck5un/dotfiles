@@ -172,9 +172,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 
 # Sreen brightness controls
 # increase screen brightness
-# bindsym XF86MonBrightnessUp exec light -A 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
+bindsym XF86MonBrightnessUp exec light -A 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
 # decrease screen brightness
-# bindsym XF86MonBrightnessDown exec light -U 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
+bindsym XF86MonBrightnessDown exec light -U 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
 #
 
 # taken from https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
