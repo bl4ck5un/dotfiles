@@ -131,6 +131,8 @@ bindsym $mod+r mode "resize"
 # STARTUP
 # =======
 
+exec --no-startup-id xset s 300 5
+exec --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- xsecurelock
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 exec --no-startup-id xscreensaver -no-splash
 # exec --no-startup-id fcitx
@@ -159,8 +161,7 @@ bar {
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
-# bindsym $mod+Shift+L exec xscreensaver-command -lock
-bindsym $mod+Shift+L exec xsecurelock
+bindsym $mod+Shift+L exec xset s activate
 
 # rofi
 bindsym $sup+space exec rofi -show window
