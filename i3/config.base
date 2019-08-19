@@ -161,7 +161,9 @@ bar {
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
-bindsym $mod+Shift+L exec xset s activate
+# https://github.com/google/xsecurelock#automatic-locking
+set $Locker xset s activate
+bindsym $mod+Shift+L exec $Locker
 
 # rofi
 bindsym $sup+space exec rofi -show window
@@ -175,8 +177,6 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute s
 bindsym XF86MonBrightnessUp exec light -A 5 # increase the brightness by 5%
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease the brightness by 5%
 
-# taken from https://wiki.archlinux.org/index.php/I3#Shutdown.2C_reboot.2C_lock_screen
-set $Locker xsecurelock && sleep 1
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
