@@ -131,6 +131,8 @@ bindsym $mod+r mode "resize"
 # STARTUP
 # =======
 
+exec --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- xsecurelock
+exec --no-startup-id xset s 300 2
 # exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
 # exec --no-startup-id xscreensaver -no-splash
 # exec --no-startup-id fcitx
