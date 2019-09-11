@@ -391,15 +391,12 @@ let g:tex_conceal = ""
 let g:tex_flavor = "latex"
 
 " vimtex
-"
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
-    let g:vimtex_view_general_viewer = 'skimpdf'
+    let g:vimtex_view_method = 'skim'
   else
-    let g:vimtex_view_general_viewer = 'atril'
-    "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-    "let g:vimtex_view_general_options_latexmk = '--unique'
+    let g:vimtex_view_method = 'zathura'
   endif
 endif
 
