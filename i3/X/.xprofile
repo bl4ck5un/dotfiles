@@ -1,0 +1,2 @@
+xrdb -merge ~/.Xresources
+xrandr --dpi 196

@@ -231,7 +231,7 @@ let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
+let g:NERDTreeWinSize = 30
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
 noremap <F3> :NERDTreeToggle<CR>
@@ -391,15 +391,12 @@ let g:tex_conceal = ""
 let g:tex_flavor = "latex"
 
 " vimtex
-"
 if has("unix")
   let s:uname = system("uname -s")
   if s:uname == "Darwin\n"
-    let g:vimtex_view_general_viewer = 'skimpdf'
+    let g:vimtex_view_method = 'skim'
   else
-    let g:vimtex_view_general_viewer = 'atril'
-    "let g:vimtex_view_general_options = '--unique file:@pdf\#src:@line@tex'
-    "let g:vimtex_view_general_options_latexmk = '--unique'
+    let g:vimtex_view_method = 'zathura'
   endif
 endif
 

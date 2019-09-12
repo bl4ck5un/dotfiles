@@ -6,7 +6,7 @@ set $mod Mod1
 set $sup Mod4
 
 # font for window titles.
-font pango:Noto Sans CJK SC Regular 9
+font pango:Roboto 10
 
 # $i3-theme-window
 
@@ -14,12 +14,10 @@ font pango:Noto Sans CJK SC Regular 9
 floating_modifier $mod
 
 # start a terminal
-bindsym Control+mod1+t exec konsole
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec xfce4-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
-bindsym Control+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop
@@ -107,7 +105,7 @@ bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+E exit
+# bindsym $mod+Shift+E exit
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -133,13 +131,16 @@ bindsym $mod+r mode "resize"
 # STARTUP
 # =======
 
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec --no-startup-id xscreensaver -no-splash
-exec --no-startup-id fcitx
-exec --no-startup-id pasystray
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec_always --no-startup-id gnome-power-manager
+exec --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- xsecurelock
+exec --no-startup-id xset s 300 2
+# exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+# exec --no-startup-id xscreensaver -no-splash
+# exec --no-startup-id fcitx
+# exec --no-startup-id pasystray
+# exec --no-startup-id nm-applet
+# exec --no-startup-id blueman-applet
+exec_always --no-startup-id xfce4-power-manager
+exec --no-startup-id vmware-user
 
 # BAR
 # ===
@@ -149,7 +150,7 @@ bindsym $mod+Shift+M bar mode dock
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango: Noto Sans CJK SC Regular, FontAwesome, 8
+  font pango:Terminus, FontAwesome, 10
   # tray_output primary
   status_command i3status -c ~/.config/i3/i3status.conf
   # $i3-theme-bar
@@ -160,7 +161,9 @@ bar {
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
-bindsym $mod+Shift+L exec xscreensaver-command -lock
+# https://github.com/google/xsecurelock#automatic-locking
+set $Locker xset s activate
+bindsym $mod+Shift+L exec $Locker
 
 # rofi
 bindsym $sup+space exec rofi -show window
@@ -171,7 +174,22 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #d
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
 
 # Sreen brightness controls
-# increase screen brightness
-bindsym XF86MonBrightnessUp exec light -A 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
-# decrease screen brightness
-bindsym XF86MonBrightnessDown exec light -U 5 && notify-send  -u low -t 100 "brightness set to $(light -G)"
+bindsym XF86MonBrightnessUp exec light -A 5 # increase the brightness by 5%
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease the brightness by 5%
+
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Ctrl+$mod+Delete mode "$mode_system"

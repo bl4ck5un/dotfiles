@@ -23,7 +23,7 @@ case $DISTRIBUTION_ID in
         ;;
     arch)
         echo "In Arch"
-        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl
+        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl python python2 python-pip python2-pip
         ;;
     Fedora)
         echo "In Fedora"
