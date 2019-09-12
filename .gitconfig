@@ -1,10 +1,9 @@
 [core]
     editor = vim
-	autocrlf = input
+    autocrlf = input
 [user]
 	name = Fan Zhang
 	email = bl4ck5unxx@gmail.com
-
 [color]
     ui = auto
 [alias]
@@ -13,3 +12,5 @@
 	default = simple
 [merge]
 	tool = vimdiff
+[url "git@github.com:"]
+	insteadOf = https://github.com/
