@@ -1,11 +1,10 @@
 [core]
     editor = vim
-	autocrlf = input
+    autocrlf = input
 [user]
 	name = Fan Zhang
 	email = bl4ck5unxx@gmail.com
 	signingkey = 8D50C5731BFBA59D8B88F637487882CA29A9D8EB
-
 [color]
     ui = auto
 [alias]
@@ -14,5 +13,7 @@
 	default = simple
 [merge]
 	tool = vimdiff
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [clangFormat]
 	style = file
