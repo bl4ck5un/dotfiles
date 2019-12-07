@@ -50,28 +50,14 @@ if v:version >= 703
   Plug 'Shougo/vimshell.vim'
 endif
 
-if v:version >= 704
-  "" Snippets
-  Plug 'SirVer/ultisnips'
-endif
-Plug 'honza/vim-snippets'
-
 "" Color
 Plug 'morhetz/gruvbox'
 
-"" vim-toml
-Plug 'cespare/vim-toml'
-Plug 'maralla/vim-toml-enhance'
-
 "" Completer
-Plug 'Valloric/YouCompleteMe'
-
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer'}
 
 " rust
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', {'for': 'rust' }
 
 " python
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
