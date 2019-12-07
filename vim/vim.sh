@@ -11,8 +11,8 @@ fi
 # vim
 rm -rf ~/.vim
 mkdir -p ~/.vim
-ln -sf $(pwd)/vim/ftplugin ~/.vim
-ln -sf $(pwd)/vim/plugin ~/.vim
+ln -sf $(pwd)/ftplugin ~/.vim
+ln -sf $(pwd)/plugin ~/.vim
 ln -sf $(pwd)/.vimrc ~/.vimrc
 
 vim +PlugIn +qall
