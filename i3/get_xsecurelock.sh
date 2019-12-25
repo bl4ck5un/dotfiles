@@ -1,6 +1,6 @@
 set -ex
 
-sudo apt install autotools-dev binutils gcc libc6-dev libpam-dev \
+sudo apt install autoconf autotools-dev binutils gcc libc6-dev libpam-dev \
  libx11-dev libxcomposite-dev libxext-dev libxfixes-dev libxft-dev \
  libxmuu-dev libxrandr-dev libxss-dev make pkg-config x11proto-core-dev \
  xss-lock
