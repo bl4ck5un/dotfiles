@@ -6,7 +6,7 @@ set $mod Mod1
 set $sup Mod4
 
 # font for window titles.
-font pango:Roboto 10
+font pango:Terminus 10
 
 # $i3-theme-window
 
