@@ -6,7 +6,7 @@ set $mod Mod1
 set $sup Mod4
 
 # font for window titles.
-font pango:Terminus 10
+font pango:Libertinus Sans 12
 
 # $i3-theme-window
 
@@ -150,7 +150,7 @@ bindsym $mod+Shift+M bar mode dock
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango:Terminus, FontAwesome, 10
+  font pango:Libertinus Sans, FontAwesome, 12
   # tray_output primary
   status_command i3status -c ~/.config/i3/i3status.conf
   # $i3-theme-bar
