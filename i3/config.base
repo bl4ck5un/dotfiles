@@ -18,6 +18,7 @@ bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
+bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec j4-dmenu-desktop
@@ -149,11 +150,8 @@ exec_always --no-startup-id pulse-volume-watcher.py | xob
 
 # BAR
 # ===
-bindsym $mod+m bar mode invisible
-bindsym $mod+Shift+M bar mode dock
+bindsym $mod+m bar mode toggle
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
 bar {
   font pango:Roboto, FontAwesome, 12
   # tray_output primary
@@ -173,13 +171,25 @@ bindsym $mod+Shift+L exec $Locker
 bindsym $sup+space exec rofi -show window
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%       #increase sound volume
-bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%       #decrease sound volume
-bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle    # mute sound
+# increase sound volume
+set $inc_volume pactl set-sink-volume @DEFAULT_SINK@ +5%
+# decrease sound volume
+set $dec_volume pactl set-sink-volume @DEFAULT_SINK@ -5%
+# mute
+set $mut_volume pactl set-sink-mute   @DEFAULT_SINK@ toggle
+
+bindsym XF86AudioRaiseVolume    exec --no-startup-id $inc_volume
+bindsym XF86AudioLowerVolume    exec --no-startup-id $dec_volume
+bindsym XF86AudioMute           exec --no-startup-id $mut_volume
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp     exec brightnessctl set +10%  && display_brightness.sh # increase the brightness by 10%
-bindsym XF86MonBrightnessDown   exec brightnessctl set 10%-  && display_brightness.sh # decrease the brightness by 10%
+# increase the brightness by 10%
+set $inc_brightness brightnessctl set +10% && display_brightness.sh
+# decrease the brightness by 10%
+set $dec_brightness brightnessctl set 10%- && display_brightness.sh
+
+bindsym XF86MonBrightnessUp     exec --no-startup-id $inc_brightness
+bindsym XF86MonBrightnessDown   exec $dec_brightness
 
 
 set $mode_system Choose: (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (Shift+s) shutdown
