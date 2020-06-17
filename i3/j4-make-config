@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 # i3 config generator/switcher
 # by Oliver Kraitschy

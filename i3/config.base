@@ -6,7 +6,7 @@ set $mod Mod1
 set $sup Mod4
 
 # font for window titles.
-font pango:Libertinus Sans 12
+font pango:Roboto 12
 
 # $i3-theme-window
 
@@ -14,7 +14,7 @@ font pango:Libertinus Sans 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec gnome-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -131,16 +131,16 @@ bindsym $mod+r mode "resize"
 # STARTUP
 # =======
 
-exec --no-startup-id xss-lock -n /usr/local/libexec/xsecurelock/dimmer -l -- xsecurelock
-exec --no-startup-id xset s 300 2
-# exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-# exec --no-startup-id xscreensaver -no-splash
+exec --no-startup-id xset s 180 120
+exec --no-startup-id xss-lock -n dim-screen.sh -- i3lock -n
+exec --no-startup-id pasystray
 # exec --no-startup-id fcitx
-# exec --no-startup-id pasystray
 # exec --no-startup-id nm-applet
 # exec --no-startup-id blueman-applet
-exec_always --no-startup-id xfce4-power-manager
-exec --no-startup-id vmware-user
+# exec_always --no-startup-id xfce4-power-manager
+
+# useful in VMs
+# exec --no-startup-id vmware-user
 
 # BAR
 # ===
@@ -150,7 +150,7 @@ bindsym $mod+Shift+M bar mode dock
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  font pango:Libertinus Sans, FontAwesome, 12
+  font pango:Roboto, FontAwesome, 12
   # tray_output primary
   status_command i3status -c ~/.config/i3/i3status.conf
   # $i3-theme-bar
@@ -161,7 +161,6 @@ bar {
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
-# https://github.com/google/xsecurelock#automatic-locking
 set $Locker xset s activate
 bindsym $mod+Shift+L exec $Locker
 
@@ -169,16 +168,16 @@ bindsym $mod+Shift+L exec $Locker
 bindsym $sup+space exec rofi -show window
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5% #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5% #decrease sound volume
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle # mute sound
+bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%       #increase sound volume
+bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%       #decrease sound volume
+bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle   # mute sound
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5 # increase the brightness by 5%
-bindsym XF86MonBrightnessDown exec light -U 5 # decrease the brightness by 5%
+bindsym XF86MonBrightnessUp     exec brightnessctl set +10%     # increase the brightness by 10%
+bindsym XF86MonBrightnessDown   exec brightnessctl set 10%-   # decrease the brightness by 10%
 
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system Choose: (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id $Locker, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
