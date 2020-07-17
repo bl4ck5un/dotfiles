@@ -7,6 +7,8 @@ ADOBE_FONT_HOME="$FONT_HOME/adobe-fonts"
 
 echo "Installing adboe fonts to $ADOBE_FONT_HOME"
 
+mkdir -p $ADOBE_FONT_HOME
+
 download_from_zip() {
     TMP_DIR=$(mktemp -d)
     pushd $TMP_DIR
