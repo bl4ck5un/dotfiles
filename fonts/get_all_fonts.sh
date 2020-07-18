@@ -2,9 +2,11 @@
 
 set -ex
 
-sudo apt install fonts-inconsolata \
+sudo apt install --yes -qq \
+    fonts-firacode \
+    fonts-roboto \
+    fonts-inconsolata \
     xfonts-terminus \
-    fonts-firacode
 
 bash ./get_adobe_fonts_cjk.sh
 bash ./get_source_pro_fonts.sh
