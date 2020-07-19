@@ -7,6 +7,8 @@ ln -sf $(pwd)/themes $HOME/.config/i3
 
 echo "Installing Ubuntu deps packages"
 sudo apt-get install --yes \
+    i3 \
+    i3lock \
     j4-dmenu-desktop \
     fonts-roboto \
     fonts-firacode \

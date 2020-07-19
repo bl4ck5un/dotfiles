@@ -14,7 +14,7 @@ font pango:Roboto 12
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec gnome-terminal
+bindsym $mod+Return exec i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -128,6 +128,10 @@ bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+# handle multi-head
+bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto && notify-send "Welcome back!"
+bindsym $mod+F7 exec --no-startup-id /usr/local/bin/autorandr -c --default "home" && notify-send "Autorandr fired."
 
 # STARTUP
 # =======

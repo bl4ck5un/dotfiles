@@ -1,0 +1,7 @@
+A udev rule to turn on the laptop screen if it is the only one (and turned off).
+
+Ref
+
+- https://frdmtoplay.com/i3-udev-xrandr-hotplugging-output-switching/
+- https://gitlab.com/apiraino/dotfiles/-/tree/master/autorandr
+- https://wiki.archlinux.org/index.php/udev
