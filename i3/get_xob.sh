@@ -12,6 +12,5 @@ sudo apt-get install --yes -qq $BUILD_DEPS
 git clone https://github.com/florentc/xob.git
 cd xob
 make && sudo make install
-sudo apt-get autoremove --purge $BUILD_DEPS
 popd
 
