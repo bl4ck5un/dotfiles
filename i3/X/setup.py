@@ -47,8 +47,10 @@ def link_to_home(file, **kwargs):
 args = docopt(__doc__)
 
 if args['--4k']:
-    link_to_home('.xinitrc-4k', overwrite=True, newname='.xinitrc')
+    # not used by GDM so
+    # link_to_home('.xinitrc-4k', overwrite=True, newname='.xinitrc')
     link_to_home('.Xresources-4k', overwrite=True, newname='.Xresources')
 else:
-    link_to_home('.xinitrc', overwrite=True)
+    # not used by GDM so
+    # link_to_home('.xinitrc', overwrite=True)
     link_to_home('.Xresources', overwrite=True)
