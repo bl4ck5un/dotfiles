@@ -1,0 +1,2 @@
+SGX_SDK=${SGX_SDK:-"/opt/intel/sgxsdk"}
+test -d $SGX_SDK && source $SGX_SDK/environment

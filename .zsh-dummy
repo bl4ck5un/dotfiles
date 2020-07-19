@@ -1,5 +1,9 @@
-source ~/dev/dotfiles/.zshrc
+source $HOME/dev/dotfiles/.zshrc
+
+# uncomment as needed
+# source $HOME/dev/dotfiles/.zshrc-rust
+# source $HOME/dev/dotfiles/.zshrc-sgx
 
 # customization
-PATH=/usr/local/bin:$PATH
-export PATH
+# PATH=$PATH
+# export PATH
