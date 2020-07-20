@@ -132,7 +132,7 @@ bindsym $mod+r mode "resize"
 
 # handle multi-head
 bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto && notify-send "Welcome back!"
-bindsym $mod+F7 exec --no-startup-id /usr/local/bin/autorandr -c --default "home" && notify-send "Autorandr fired."
+bindsym $mod+F7 exec --no-startup-id autorandr -c --default "home" && notify-send "Autorandr fired."
 
 # STARTUP
 # =======
