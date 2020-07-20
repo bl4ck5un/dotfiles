@@ -138,7 +138,7 @@ bindsym $mod+F7 exec --no-startup-id autorandr -c --default "home" && notify-sen
 # =======
 
 exec --no-startup-id xset s 180 120
-exec --no-startup-id xss-lock -n dim-screen.sh -- i3lock -n
+exec --no-startup-id xss-lock -n dim-screen.sh -- i3lock -n -c 282828
 exec --no-startup-id pasystray
 
 # set up xob
