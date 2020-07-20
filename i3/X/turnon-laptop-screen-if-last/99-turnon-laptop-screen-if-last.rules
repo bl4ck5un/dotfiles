@@ -1,1 +1,0 @@
-KERNEL=="card0", SUBSYSTEM=="drm", ACTION=="change", RUN+="/home/fanz/.local/bin/turnon-laptop-screen-if-last.sh"

@@ -1,5 +1,7 @@
 4k: udev
 	./setup.py --4k
 
-udev:
-	make -C ./turnon-laptop-screen-if-last
+warning:
+	@echo "+-----------------------------------------------------+"
+	@echo "| Please run autorandr.sh to run autorandr manually.  |"
+	@echo "+-----------------------------------------------------+"
