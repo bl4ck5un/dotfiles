@@ -2,7 +2,7 @@
 
 set -e
 
-tmpdir=$(mktemp -d autorandr.XXXXXX)
+tmpdir=$(mktemp -d /tmp/autorandr.XXXXXX)
 
 pushd $tmpdir
 git clone https://github.com/phillipberndt/autorandr.git
