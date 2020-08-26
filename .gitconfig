@@ -17,3 +17,5 @@
 #	insteadOf = https://github.com/
 [clangFormat]
 	style = file
+[pull]
+	rebase = false
