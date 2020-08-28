@@ -27,6 +27,10 @@ config:
 	test -f ./j4-make-config && ./j4-make-config
 	@echo "i3 config generated."
 
+	mkdir -p ${HOME}/.config/dunst
+	ln -sf ${PWD}/dunst/dunstrc ${HOME}/.config/dunst
+	@echo "dunst config generated."
+
 	make -C ./X
 
 scripts:
