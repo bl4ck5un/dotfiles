@@ -1,4 +1,4 @@
-4k: udev
+4k:
 	./setup.py --4k
 
 warning:
