@@ -22,7 +22,8 @@ bindsym $mod+Shift+Q kill
 bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec j4-dmenu-desktop
+#bindsym $mod+d exec j4-dmenu-desktop
+bindsym $mod+d exec rofi -modi drun -show drun -width 100 -location 1 -lines 3 -bw 2 -yoffset -2 -font "Sans Serif 16"
 
 # disable auto focus when mouse moves over window
 focus_follows_mouse no
