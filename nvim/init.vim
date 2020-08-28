@@ -54,7 +54,7 @@ endif
 Plug 'morhetz/gruvbox'
 
 "" Completer
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer'}
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
 
 " rust
 Plug 'rust-lang/rust.vim', {'for': 'rust' }
