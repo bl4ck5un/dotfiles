@@ -135,8 +135,8 @@ bindsym Escape mode "default"
 bindsym $mod+r mode "resize"
 
 # handle multi-head
-bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto && notify-send "Welcome back!"
-bindsym $mod+F7 exec --no-startup-id autorandr -c --default "home" && notify-send "Autorandr fired."
+bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto && notify-send --icon=gnome-info "Welcome back!"
+bindsym $mod+F7 exec --no-startup-id autorandr -c --default "home" && notify-send --icon=display "Autorandr fired."
 
 # STARTUP
 # =======
@@ -150,7 +150,7 @@ exec_always --no-startup-id mkfifo /tmp/xob
 exec_always --no-startup-id tail -f /tmp/xob | xob
 exec_always --no-startup-id pulse-volume-watcher.py | xob
 # exec --no-startup-id fcitx
-# exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 # exec_always --no-startup-id xfce4-power-manager
 
