@@ -1,0 +1,3 @@
+30-touchpad.conf changes how touchpad click works. In particular it disables the the middle click area.
+
+Put it in /etc/X11/xorg.conf.d/
