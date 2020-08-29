@@ -31,6 +31,9 @@ config:
 	ln -sf ${PWD}/dunst/dunstrc ${HOME}/.config/dunst
 	@echo "dunst config generated."
 
+	make -C ./rofi
+	@echo "rofi config generated."
+
 	make -C ./X
 
 scripts:

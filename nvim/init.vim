@@ -30,7 +30,6 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -41,14 +40,6 @@ if exists('make')
         let g:make = 'make'
 endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
-
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
-
-if v:version >= 703
-  Plug 'Shougo/vimshell.vim'
-endif
 
 "" Color
 Plug 'morhetz/gruvbox'
@@ -223,18 +214,7 @@ let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 30
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
-noremap <F3> :NERDTreeToggle<CR>
-
-" vimshell.vim
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-let g:vimshell_prompt =  '$ '
-
-" terminal emulation
-if g:vim_bootstrap_editor == 'nvim'
-  nnoremap <silent> <leader>sh :terminal<CR>
-else
-  nnoremap <silent> <leader>sh :VimShellCreate<CR>
-endif
+noremap <silent><F3> :NERDTreeToggle<CR>
 
 "*****************************************************************************
 "" Functions
@@ -278,22 +258,27 @@ augroup END
 set autoread
 
 "*****************************************************************************
-"" Mappings
+"" Mappings key bindings
 "*****************************************************************************
 
-"" Split
-noremap <Leader>h :<C-u>split<CR>
-noremap <Leader>v :<C-u>vsplit<CR>
+"" avoid esc
+imap jk <Esc>
+imap <leader>w <Esc>:w<CR>i
+nmap <leader>w :w<CR>
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
+" long line navigation made easy
+nnoremap k gk
+nnoremap j gj
+nnoremap 0 g0
+nnoremap $ g$
+nnoremap ^ g^
+
+"" Split
+noremap <leader>h :<C-u>split<CR>
+noremap <leader>v :<C-u>vsplit<CR>
+
+"" Commentary
+nmap <silent><leader>, :Commentary<CR>
 
 " session management
 nnoremap <leader>so :OpenSession<Space>
@@ -309,10 +294,6 @@ nnoremap <silent> <S-t> :tabnew<CR>
 "" Opens a tab edit command with the path of the currently edited file filled
 noremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<C-j>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -452,14 +433,3 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
-" cscope
-" Read: https://neovim.io/doc/user/if_cscop.html
-nmap <leader>fg :cs find g <C-R>=expand("<cword>")<CR><CR>
-nmap <leader>fs :cs find s <C-R>=expand("<cword>")<CR><CR>
-
-" long line navigation made easy
-nnoremap k gk
-nnoremap j gj
-nnoremap 0 g0
-nnoremap $ g$
-nnoremap ^ g^

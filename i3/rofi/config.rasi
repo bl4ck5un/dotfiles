@@ -1,0 +1,11 @@
+configuration {
+	modi: "window,run,drun";
+	show-icons: true;
+	theme: "gruvbox-dark";
+	font: "sans serif 10";
+    dpi: 1;
+	lines: 5;
+	location: 1;
+    width: 100;
+	yoffset: -2;
+}
