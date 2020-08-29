@@ -135,8 +135,8 @@ bindsym Escape mode "default"
 bindsym $mod+r mode "resize"
 
 # handle multi-head
-bindsym $mod+F1 exec --no-startup-id xrandr --output eDP-1 --auto && notify-send --icon=gnome-info "Welcome back!"
-bindsym $mod+F7 exec --no-startup-id autorandr -c --default "home" && notify-send --icon=display "Autorandr fired."
+bindsym $mod+F1 exec xrandr --output eDP-1 --auto && notify-send --icon=gnome-info "Welcome back!"
+bindsym $mod+F7 exec autorandr -c --default "home" && notify-send --icon=display "Autorandr fired"
 
 # STARTUP
 # =======
