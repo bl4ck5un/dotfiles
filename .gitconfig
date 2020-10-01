@@ -4,7 +4,7 @@
 [user]
 	name = Fan Zhang
 	email = bl4ck5unxx@gmail.com
-	signingkey = 8D50C5731BFBA59D8B88F637487882CA29A9D8EB
+	signingkey = 01F5F87BFB08EAAA4651A18614BBA8582ECB43AF
 [color]
     ui = auto
 [alias]
@@ -19,3 +19,5 @@
 	style = file
 [pull]
 	rebase = false
+#[commit]
+#	gpgsign = true
