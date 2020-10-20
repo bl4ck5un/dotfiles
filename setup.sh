@@ -19,7 +19,7 @@ case $DISTRIBUTION_ID in
     Ubuntu | neon)
         echo 'In Ubuntu | Neon'
         sudo apt-get update
-        sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev wget curl tmux direnv
+        sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev wget curl tmux
         ;;
     arch)
         echo "In Arch"
