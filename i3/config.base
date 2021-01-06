@@ -108,6 +108,7 @@ bindsym $mod+Shift+parenright move $ws10
 
 # assgin applications to workspace
 assign [class="Firefox"] workspace number 8
+assign [class="Google-chrome"] workspace number 8
 assign [class="Slack"] 9
 
 # reload the configuration file
@@ -172,14 +173,12 @@ bar {
 
 # Keybindings
 # ===========
-bindsym Mod1+Tab focus right
-bindsym Mod1+Shift+Tab focus left
 
 set $Locker xset s activate
 bindsym $mod+Shift+L exec $Locker
 
 # rofi
-bindsym $sup+space exec rofi -show window
+bindsym $mod+Tab exec rofi -show window
 
 # Pulse Audio controls
 # increase sound volume
