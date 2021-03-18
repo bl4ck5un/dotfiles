@@ -45,7 +45,7 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 Plug 'morhetz/gruvbox'
 
 "" Completer
-Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-completer --go-completer'}
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --go-completer'}
 
 " rust
 Plug 'rust-lang/rust.vim', {'for': 'rust' }
