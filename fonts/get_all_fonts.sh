@@ -6,6 +6,7 @@ sudo apt install --yes -qq \
     fonts-firacode \
     fonts-roboto \
     fonts-inconsolata \
+    fonts-ibm-plex \
     xfonts-terminus \
 
 bash ./get_adobe_fonts_cjk.sh

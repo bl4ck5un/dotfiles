@@ -13,7 +13,7 @@ else
 fi
 
 case $DISTRIBUTION_ID in
-    Ubuntu | neon)
+    Ubuntu | Neon)
         sudo apt update && sudo apt install direnv
         go get github.com/gsamokovarov/jump
         ;;
