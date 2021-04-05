@@ -45,3 +45,24 @@ def nvim(_):
     invoke.run("mkdir -p ~/.config/nvim")
     sym_link('./nvim/init.vim', '~/.config/nvim/init.vim')
     invoke.run("nvim +PlugClean +PlugUpdate +PlugIn +qall")
+
+
+@fabric.task
+def jetbrain(_):
+    toolbox_url = "https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz"
+    fname = download(toolbox_url, "/tmp/jetbrain.tar.gz")
+    invoke.run(f"mkdir ~/bin && cd ~/bin && tar xvf {fname}")
+
+
+@fabric.task
+def zsh(_):
+    import distro
+    import platform
+    sys = platform.system()
+    if sys == 'Linux':
+        invoke.run("sudo apt-get install direnv")
+        invoke.run("go get github.com/gsamokovarov/jump")
+    elif sys == 'Darwin':
+        invoke.run("brew install direnv jump")
+    else:
+        raise 'not supported'
