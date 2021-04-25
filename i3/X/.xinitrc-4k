@@ -1,3 +1,4 @@
 xrdb -merge ~/.Xresources
 xrandr --dpi 192
+vmware-user &
 exec i3
