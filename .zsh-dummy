@@ -7,5 +7,6 @@ source $HOME/dev/dotfiles/.zshrc
 # uncomment as needed
 # source $HOME/dev/dotfiles/.zshrc-rust
 # source $HOME/dev/dotfiles/.zshrc-sgx
-# source $HOME/dev/dotfiles/.zshrc-zsh-enhancements
 # source $HOME/dev/dotfiles/.zshrc-go
+#
+# source $HOME/dev/dotfiles/.zshrc-zsh-enhancements

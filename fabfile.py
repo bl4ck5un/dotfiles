@@ -44,7 +44,7 @@ def nvim(_):
     invoke.run("pip3 install --user -U neovim")
     invoke.run("mkdir -p ~/.config/nvim")
     sym_link('./nvim/init.vim', '~/.config/nvim/init.vim')
-    invoke.run("nvim +PlugClean +PlugUpdate +PlugIn +qall")
+    invoke.run("nvim +PlugClean! +PlugUpdate +PlugIn +qall")
 
 
 @fabric.task
