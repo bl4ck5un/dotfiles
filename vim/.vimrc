@@ -44,13 +44,7 @@ Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'lervag/vimtex'
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --racer-completer' }
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py' }
 let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
