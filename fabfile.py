@@ -51,7 +51,7 @@ def nvim(_):
 def jetbrain(_):
     toolbox_url = "https://download.jetbrains.com/toolbox/jetbrains-toolbox-1.20.7940.tar.gz"
     fname = download(toolbox_url, "/tmp/jetbrain.tar.gz")
-    invoke.run(f"mkdir ~/bin && cd ~/bin && tar xvf {fname}")
+    invoke.run(f"mkdir -p ~/bin && cd ~/bin && tar xvf {fname}")
 
 
 @fabric.task
