@@ -5,4 +5,4 @@
 
 FONTS="font-inconsolata font-roboto-slab font-lato"
 
-brew cask install $FONTS
+brew install $FONTS
