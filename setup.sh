@@ -32,8 +32,7 @@ case $DISTRIBUTION_ID in
         ;;
     macOS)
         echo "In macOS"
-        # brew cmake vim
-        echo "skipping brew cmake vim"
+        brew install make vim
         ;;
     *)
         echo "Unknown distribution $DISTRIBUTION_ID"
