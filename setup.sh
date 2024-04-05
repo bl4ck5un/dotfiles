@@ -13,13 +13,13 @@ fi
 case $DISTRIBUTION_ID in
     openSUSE)
         echo 'In openSUSE'
-        sudo zypper install cmake zsh vim git ctags python-devel python3-devel wget curl
+        sudo zypper install cmake zsh vim git python-devel python3-devel wget curl
         sudo zypper install -t pattern devel_basis
         ;;
     Ubuntu | Neon)
         echo 'In Ubuntu | Neon'
         sudo apt-get update
-        sudo apt-get install -y cmake zsh vim git ctags build-essential python-dev python3-dev wget curl tmux
+        sudo apt-get install -y cmake zsh vim git build-essential python3-dev wget curl tmux
         ;;
     arch)
         echo "In Arch"
@@ -32,8 +32,7 @@ case $DISTRIBUTION_ID in
         ;;
     macOS)
         echo "In macOS"
-        # brew cmake vim
-        echo "skipping brew cmake vim"
+        brew install make vim
         ;;
     *)
         echo "Unknown distribution $DISTRIBUTION_ID"
