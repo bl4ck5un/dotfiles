@@ -9,6 +9,7 @@
     ui = auto
 [alias]
 	st = status
+	latexdiff = difftool -t latexdiff
 [push]
 	default = simple
 [merge]
@@ -21,3 +22,5 @@
 	rebase = false
 #[commit]
 #	gpgsign = true
+[difftool "latexdiff"]
+	cmd = git-latexdiff-helper \"$LOCAL\" \"$REMOTE\"
