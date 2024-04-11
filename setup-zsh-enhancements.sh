@@ -4,7 +4,14 @@
 set -euo pipefail
 
 # direnv
-sudo apt update && sudo apt install direnv
+if command -v apt-get > /dev/null; then
+    sudo apt update && sudo apt install direnv
+fi
+
+
+if command -v brew > /dev/null; then
+    brew install direnv
+fi
 
 
 # jump https://github.com/gsamokovarov/jump
