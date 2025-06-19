@@ -79,8 +79,6 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set bomb
-set binary
 
 
 "" Fix backspace indent
@@ -138,8 +136,6 @@ endif
 
 set mousemodel=popup
 set t_Co=256
-set guioptions=egmrti
-set gfn=Monospace\ 10
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
