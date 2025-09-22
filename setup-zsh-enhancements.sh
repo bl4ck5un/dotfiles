@@ -18,5 +18,6 @@ fi
 if command -v go > /dev/null; then
     go install github.com/gsamokovarov/jump@latest
 else
+    echo "installed in the deb package"
     wget https://github.com/gsamokovarov/jump/releases/download/v0.30.1/jump_0.30.1_amd64.deb && sudo dpkg -i jump_0.30.1_amd64.deb
 fi

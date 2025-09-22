@@ -8,7 +8,7 @@ command -v apt-get && {
     neovim
 }
 
-pip3 install --user -U neovim
+# pip3 install --user -U neovim
 
 mkdir -p ~/.config/nvim
 ln -sf $(pwd)/init.vim ~/.config/nvim/init.vim
