@@ -11,6 +11,10 @@ alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
 alias pbcopy='xsel --clipboard --input'
 alias pbpaste='xsel --clipboard --output'
 
+if ! command -v open >/dev/null; then
+  alias open='xdg-open'
+fi
+
 [[ -f "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh" ]] && \
     source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
 
