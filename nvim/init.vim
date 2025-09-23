@@ -5,6 +5,15 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 endif
 
+
+if executable('/Users/fanz/.venvs/nvim/bin/python')
+  let g:python3_host_prog = '/Users/fanz/.venvs/nvim/bin/python'
+else
+  echohl WarningMsg
+  echom "Neovim Python host venv missing: ~/.venvs/nvim"
+  echohl None
+endif
+
 let g:vim_bootstrap_editor = 'nvim'
 let vimplug_exists=expand('~/.config/nvim/autoload/plug.vim')
 
@@ -65,9 +74,6 @@ if filereadable(expand("~/.config/nvim/local_bundles.vim"))
 endif
 
 call plug#end()
-" Required:
-filetype plugin indent on
-
 "*****************************************************************************
 "" End of Plug List
 "*****************************************************************************
@@ -79,6 +85,7 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
+set nobomb
 
 
 "" Fix backspace indent
@@ -105,6 +112,8 @@ set smartcase
 "" Directories for swp files
 set nobackup
 set noswapfile
+set undofile
+set undodir=~/.config/nvim/undo
 
 set fileformats=unix,dos,mac
 
@@ -136,6 +145,8 @@ endif
 
 set mousemodel=popup
 set t_Co=256
+set guioptions=egmrti
+set gfn=Monospace\ 10
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
@@ -159,8 +170,7 @@ set scrolloff=3
 set laststatus=2
 
 "" Use modeline overrides
-set modeline
-set modelines=10
+set nomodeline
 
 set title
 set titleold="Terminal"

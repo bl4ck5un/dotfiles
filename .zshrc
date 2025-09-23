@@ -22,3 +22,5 @@ setopt clobber
 export TERM=xterm-256color
 
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
+
+ssh-add -q
