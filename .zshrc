@@ -23,4 +23,7 @@ export TERM=xterm-256color
 
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
-ssh-add -q
+if ! pgrep -u "$USER" ssh-agent >/dev/null; then
+  eval "$(ssh-agent -s)"
+  ssh-add -q
+fi
