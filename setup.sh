@@ -28,7 +28,8 @@ case $DISTRIBUTION_ID in
     Fedora)
         echo "In Fedora"
         sudo dnf install @development-tools cmake zsh vim git ctags python-devel python3-devel \
-            gcc-c++ gcc wget curl
+            gcc-c++ gcc wget curl \
+	    yp-tools
         ;;
     macOS)
         echo "In macOS"
