@@ -23,7 +23,26 @@ export TERM=xterm-256color
 
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 
+# load ssh keys for forwarding
 if ! pgrep -u "$USER" ssh-agent >/dev/null; then
   eval "$(ssh-agent -s)"
   ssh-add -q
 fi
+
+# docker compose shortcut with completion
+function dc() {
+  docker compose "$@"
+}
+compdef _docker dc=docker
+
+# up -d (detached)
+function dcu() {
+  docker compose up -d "$@"
+}
+compdef _docker dcu=docker
+
+# logs -f (follow)
+function dcl() {
+  docker compose logs -f "$@"
+}
+compdef _docker dcl=docker
