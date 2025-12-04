@@ -23,13 +23,17 @@ case $DISTRIBUTION_ID in
         ;;
     arch)
         echo "In Arch"
-        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl python python2 python-pip python2-pip
+        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl python python-pip
         ;;
     Fedora)
         echo "In Fedora"
         sudo dnf install @development-tools cmake zsh vim git ctags python-devel python3-devel \
             gcc-c++ gcc wget curl \
 	    yp-tools
+        ;;
+    cachyos)
+        echo "In CachyOS"
+        sudo pacman -Syu --needed cmake zsh vim git ctags wget curl python python-pip
         ;;
     macOS)
         echo "In macOS"
