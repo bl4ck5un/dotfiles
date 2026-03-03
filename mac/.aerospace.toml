@@ -229,6 +229,18 @@ on-mode-changed = []
     alt-shift-l = ['join-with right', 'mode main']
 
 [[on-window-detected]]
+    if.app-id = 'com.google.Chrome'
+    run = 'move-node-to-workspace W' # mnemonics W - website
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.Outlook '
+    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics W - mails
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics W - mails
+
+[[on-window-detected]]
     if.app-id = 'com.apple.Terminal'
     run = 'move-node-to-workspace T' # mnemonics T - Terminal
 
@@ -241,5 +253,5 @@ on-mode-changed = []
     run = 'move-node-to-workspace S' # mnemonics S - Slack
 
 [[on-window-detected]]
-    if.app-id = 'com.electron.trilium-note'
+    if.app-id = 'com.electron.trilium-notes'
     run = 'move-node-to-workspace N' # mnemonics N - Notes
