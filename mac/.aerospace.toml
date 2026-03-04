@@ -234,11 +234,11 @@ on-mode-changed = []
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.Outlook '
-    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics W - mails
+    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics M - mails
 
 [[on-window-detected]]
     if.app-id = 'com.apple.mail'
-    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics W - mails
+    run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics M - mails
 
 [[on-window-detected]]
     if.app-id = 'com.apple.Terminal'
@@ -255,3 +255,11 @@ on-mode-changed = []
 [[on-window-detected]]
     if.app-id = 'com.electron.trilium-notes'
     run = 'move-node-to-workspace N' # mnemonics N - Notes
+
+[[on-window-detected]]
+	if.app-id = 'com.microsoft.Powerpoint'
+    run = ['layout v_accordion', 'move-node-to-workspace P'] # mnemonics P - presentations
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iWork.Keynote'
+    run = ['layout v_accordion', 'move-node-to-workspace P'] # mnemonics P - presentations
