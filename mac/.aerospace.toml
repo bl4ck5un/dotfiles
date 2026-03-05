@@ -233,7 +233,7 @@ on-mode-changed = []
     run = 'move-node-to-workspace W' # mnemonics W - website
 
 [[on-window-detected]]
-    if.app-id = 'com.microsoft.Outlook '
+    if.app-id = 'com.microsoft.Outlook'
     run = ['layout v_accordion', 'move-node-to-workspace M'] # mnemonics M - mails
 
 [[on-window-detected]]

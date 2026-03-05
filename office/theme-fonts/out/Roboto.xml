@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<a:fontScheme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="{{SCHEME_NAME}}">
+<a:fontScheme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="Roboto">
   <a:majorFont>
-    <a:latin typeface="{{MAJOR_LATIN}}"/>
+    <a:latin typeface="Roboto"/>
     <a:ea typeface=""/>
     <a:cs typeface=""/>
   </a:majorFont>
   <a:minorFont>
-    <a:latin typeface="{{MINOR_LATIN}}"/>
+    <a:latin typeface="Roboto"/>
     <a:ea typeface=""/>
     <a:cs typeface=""/>
   </a:minorFont>
