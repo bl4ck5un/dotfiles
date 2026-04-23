@@ -258,8 +258,8 @@ on-mode-changed = []
 
 [[on-window-detected]]
 	if.app-id = 'com.microsoft.Powerpoint'
-    run = ['layout v_accordion', 'move-node-to-workspace P'] # mnemonics P - presentations
+    run = ['move-node-to-workspace P'] # mnemonics P - presentations
 
 [[on-window-detected]]
     if.app-id = 'com.apple.iWork.Keynote'
-    run = ['layout v_accordion', 'move-node-to-workspace P'] # mnemonics P - presentations
+    run = ['move-node-to-workspace P'] # mnemonics P - presentations
