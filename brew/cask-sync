@@ -1,0 +1,50 @@
+#!/usr/bin/env bash
+# Save or restore Homebrew cask list (AES-256 encrypted).
+# Usage:
+#   cask-sync save [file]     — encrypt installed casks to file (default: casks.txt.enc)
+#   cask-sync restore [file]  — decrypt and install casks from file (default: casks.txt.enc)
+#
+# Manual encrypt:  openssl enc -aes-256-cbc -pbkdf2 -salt -in casks.txt -out casks.txt.enc
+# Manual decrypt:  openssl enc -d -aes-256-cbc -pbkdf2 -in casks.txt.enc
+
+set -euo pipefail
+
+DEFAULT_FILE="$(dirname "$0")/casks.txt.enc"
+CMD="${1:-}"
+FILE="${2:-$DEFAULT_FILE}"
+
+usage() {
+  echo "Usage: $(basename "$0") <save|restore> [file]"
+  exit 1
+}
+
+case "$CMD" in
+  save)
+    brew list --cask | sort \
+      | openssl enc -aes-256-cbc -pbkdf2 -salt -out "$FILE"
+    echo "Saved and encrypted to $FILE"
+    ;;
+  restore)
+    [[ -f "$FILE" ]] || { echo "File not found: $FILE"; exit 1; }
+    mapfile -t casks < <(openssl enc -d -aes-256-cbc -pbkdf2 -in "$FILE")
+    already=()
+    to_install=()
+    for cask in "${casks[@]}"; do
+      if brew list --cask "$cask" &>/dev/null; then
+        already+=("$cask")
+      else
+        to_install+=("$cask")
+      fi
+    done
+    echo "Already installed: ${#already[@]}"
+    echo "To install: ${#to_install[@]}"
+    if [[ ${#to_install[@]} -gt 0 ]]; then
+      brew install --cask "${to_install[@]}"
+    else
+      echo "Nothing to do."
+    fi
+    ;;
+  *)
+    usage
+    ;;
+esac
