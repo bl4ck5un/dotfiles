@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# Enable three-finger drag via macOS accessibility settings.
+# Takes effect after logout/login.
+
+set -euo pipefail
+
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -bool true
+
+echo "Three-finger drag enabled. Log out and back in for it to take effect."
