@@ -20,11 +20,11 @@ Setup steps:
 
    Then create a new Zsh configuration
 
-        for rcfile in $HOME/dev/dotfiles/prezto/*; do ln -s "$rcfile" "$HOME/.$(basename $rcfile)"; done
+        for rcfile in $HOME/dev/dotfiles/zsh/prezto/*; do ln -s "$rcfile" "$HOME/.$(basename $rcfile)"; done
 
 4. Create a local `zshrc` copy
 
-        cp -f $HOME/dev/dotfiles/.zsh-dummy $HOME/.zshrc
+        cp -f $HOME/dev/dotfiles/zsh/.zsh-dummy $HOME/.zshrc
 
 4. Take immediate effective
 

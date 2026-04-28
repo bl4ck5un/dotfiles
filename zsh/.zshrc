@@ -8,18 +8,24 @@ export EDITOR='vim'
 # useful alias
 alias shuffle="perl -MList::Util=shuffle -e 'print shuffle(<STDIN>);'"
 # https://superuser.com/questions/288320/whats-like-osxs-pbcopy-for-linux
-alias pbcopy='xsel --clipboard --input'
-alias pbpaste='xsel --clipboard --output'
+if [[ -n "$WAYLAND_DISPLAY" ]] && command -v wl-copy >/dev/null; then
+  alias pbcopy='wl-copy'
+  alias pbpaste='wl-paste'
+else
+  alias pbcopy='xsel --clipboard --input'
+  alias pbpaste='xsel --clipboard --output'
+fi
 
 if ! command -v open >/dev/null; then
   alias open='xdg-open'
 fi
 
-[[ -f "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh" ]] && \
-    source "$HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh"
+[[ -f "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh" ]] && \
+    source "$HOME/.vim/plugged/gruvbox/gruvbox_256palette.sh"
 
 setopt clobber
-export TERM=xterm-256color
+# Upgrade bare 'xterm' to 256-color variant; leave alacritty/kitty/tmux/etc alone.
+[[ "$TERM" == "xterm" ]] && export TERM=xterm-256color
 
 export PATH=$HOME/.local/bin:/usr/local/bin:$PATH
 

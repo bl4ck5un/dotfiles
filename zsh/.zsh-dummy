@@ -1,0 +1,13 @@
+source $HOME/dev/dotfiles/zsh/.zshrc
+
+# customization
+# PATH=$PATH
+# export PATH
+#
+# uncomment as needed
+# source $HOME/dev/dotfiles/zsh/.zshrc-rust
+# source $HOME/dev/dotfiles/zsh/.zshrc-sgx
+# source $HOME/dev/dotfiles/zsh/.zshrc-go
+# source $HOME/dev/dotfiles/zsh/.zshrc-cachyos
+#
+# source $HOME/dev/dotfiles/zsh/.zshrc-zsh-enhancements

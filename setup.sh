@@ -45,6 +45,29 @@ case $DISTRIBUTION_ID in
         ;;
 esac
 
+# Set zsh as the default login shell (idempotent; skipped on macOS, which already ships zsh).
+if [ "$DISTRIBUTION_ID" != "macOS" ]; then
+    ZSH_PATH=$(command -v zsh) || { echo "zsh not installed; skipping chsh"; ZSH_PATH=""; }
+    if [ -n "$ZSH_PATH" ]; then
+        # Ensure /etc/shells lists zsh — chsh refuses otherwise.
+        if ! grep -qx "$ZSH_PATH" /etc/shells 2>/dev/null; then
+            echo "$ZSH_PATH" | sudo tee -a /etc/shells >/dev/null
+        fi
+
+        CURRENT_SHELL=$(getent passwd "$USER" | cut -d: -f7)
+        if [ "$CURRENT_SHELL" = "$ZSH_PATH" ]; then
+            echo "zsh is already the default shell"
+        else
+            # Try chsh; fall back to usermod (avoids password prompt under sudo).
+            if ! chsh -s "$ZSH_PATH" 2>/dev/null; then
+                echo "chsh failed, falling back to usermod"
+                sudo usermod -s "$ZSH_PATH" "$USER"
+            fi
+            echo "Default shell set to zsh (log out and back in to take effect)."
+        fi
+    fi
+fi
+
 DOTFILE_ROOT=`pwd`
 
 # install prezto
@@ -61,8 +84,8 @@ done
 
 # copy over the config files
 test -f $HOME/.zshrc && rm -f $HOME/.zshrc
-cp $DOTFILE_ROOT/.zsh-dummy $HOME/.zshrc
-ln -sf $DOTFILE_ROOT/prezto/zpreztorc $HOME/.zpreztorc
+cp $DOTFILE_ROOT/zsh/.zsh-dummy $HOME/.zshrc
+ln -sf $DOTFILE_ROOT/zsh/prezto/zpreztorc $HOME/.zpreztorc
 ln -sf $(pwd)/.gitconfig ~/.gitconfig
 ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
 
