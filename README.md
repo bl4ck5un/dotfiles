@@ -97,11 +97,21 @@ A very good collection of color schemes is found
 
 
 tmux
-------
+----
 
-1. Syslink conf
+`./setup.sh` symlinks `tmux/.tmux.conf` into `~/.tmux.conf`. The config
+auto-bootstraps TPM (the tmux plugin manager) on first run, so plugins
+(`tmux-sensible`, `tmux-yank`) install without any manual step. Inside tmux,
+`prefix + I` reloads the plugin set after edits.
 
-        ln -sf $HOME/dev/dotfiles/.tmux.conf ~/.tmux.conf
+Custom bindings worth knowing:
+
+- `prefix + r` — reload the config in place
+- `prefix + |` / `prefix + -` — horizontal / vertical split, preserving cwd
+- `v` / `y` in copy mode — visual select / yank (clipboard via tmux-yank)
+
+The login shell is taken from `$SHELL` rather than a hard-coded path, so the
+same config works across distros and macOS.
 
 iTerm2
 ------

@@ -86,7 +86,7 @@ done
 test -f $HOME/.zshrc && rm -f $HOME/.zshrc
 cp $DOTFILE_ROOT/zsh/.zsh-dummy $HOME/.zshrc
 ln -sf $DOTFILE_ROOT/zsh/prezto/zpreztorc $HOME/.zpreztorc
-ln -sf $(pwd)/.gitconfig ~/.gitconfig
-ln -sf $(pwd)/.tmux.conf ~/.tmux.conf
+ln -sf $DOTFILE_ROOT/.gitconfig ~/.gitconfig
+ln -sf $DOTFILE_ROOT/tmux/.tmux.conf ~/.tmux.conf
 
 echo 'Done. The main environment has been setup.'
