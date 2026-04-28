@@ -5,3 +5,4 @@ vim/bundle
 *.errors
 *.pyc
 *.deb
+.claude/settings.local.json
