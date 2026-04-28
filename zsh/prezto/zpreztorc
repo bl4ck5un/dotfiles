@@ -23,6 +23,9 @@ zstyle ':prezto:*:*' color 'yes'
 
 # Set the Prezto modules to load (browse modules).
 # The order matters.
+# Notable additions beyond Prezto's defaults:
+#   archive   — provides `archive`/`unarchive`/`lsarchive` helpers for tar/zip/etc.
+# (Arch-specific 'pacman' module is loaded on demand from .zshrc-cachyos via pmodload.)
 zstyle ':prezto:load' pmodule \
   'archive' \
   'docker' \

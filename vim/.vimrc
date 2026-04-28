@@ -19,6 +19,9 @@ if !filereadable(vimplug_exists)
   endif
   echo "Installing Vim-Plug..."
   echo ""
+  " 'command curl' bypasses any user 'curl' alias in a way that works in
+  " bash, zsh, AND fish (a plain '\curl' is a bash/zsh-only idiom — fish
+  " treats the backslash literally and fails with 'Unknown command: \curl').
   silent !command curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   let g:not_finish_vimplug = "yes"
 
