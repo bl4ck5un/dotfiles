@@ -1,5 +1,34 @@
 {
   "enabledPlugins": {
     "commit-commands@claude-plugins-official": true
+  },
+  "permissions": {
+    "allow": [
+      "Bash(bash -n *)",
+      "Bash(shellcheck *)",
+      "Bash(shfmt *)",
+      "Bash(command -v *)",
+      "Bash(which *)",
+      "Bash(pacman -Si *)",
+      "Bash(pacman -Ss *)",
+      "Bash(pacman -Qi *)",
+      "Bash(pacman -Qs *)",
+      "Bash(pacman -Ql *)",
+      "Bash(brew info *)",
+      "Bash(brew search *)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_response.filePath // .tool_input.file_path' | { read -r f; case \"$f\" in *.sh|*.bash) if ! out=$(bash -n \"$f\" 2>&1); then jq -nc --arg msg \"bash -n syntax error: $out\" '{systemMessage: $msg, hookSpecificOutput: {hookEventName: \"PostToolUse\", additionalContext: $msg}}'; fi;; esac; }"
+          }
+        ]
+      }
+    ]
   }
 }
