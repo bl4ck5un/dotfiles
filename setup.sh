@@ -59,7 +59,8 @@ if [ "$DISTRIBUTION_ID" != "macOS" ]; then
             echo "zsh is already the default shell"
         else
             # Try chsh; fall back to usermod (avoids password prompt under sudo).
-            if ! chsh -s "$ZSH_PATH" 2>/dev/null; then
+            echo "changing shell to $ZSH_PATH"
+            if ! chsh -s "$ZSH_PATH"; then
                 echo "chsh failed, falling back to usermod"
                 sudo usermod -s "$ZSH_PATH" "$USER"
             fi
