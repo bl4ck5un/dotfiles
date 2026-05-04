@@ -33,12 +33,3 @@ if ! pgrep -u "$USER" ssh-agent >/dev/null; then
   eval "$(ssh-agent -s)"
   ssh-add -q
 fi
-
-if [[ "$OSTYPE" == darwin* ]]; then
-  preexec() { timer=$SECONDS }
-  precmd() {
-    if [[ $? -ne 0 && $((SECONDS - timer)) -gt 3 ]]; then
-      afplay /System/Library/Sounds/Basso.aiff
-    fi
-  }
-fi
