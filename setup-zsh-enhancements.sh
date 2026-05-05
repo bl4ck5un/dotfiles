@@ -75,7 +75,7 @@ elif command -v brew >/dev/null; then
     if command -v go >/dev/null; then
         go install github.com/gsamokovarov/jump@v${JUMP_VER}
     else
-        echo "No Go compiler found. Please install Go or install jump manually from https://github.com/gsamokovarov/jump"
+        echo "🛑 No Go compiler found. Please install Go or install jump manually from https://github.com/gsamokovarov/jump"
     fi
 
 # Unsupported
