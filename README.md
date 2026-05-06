@@ -4,30 +4,38 @@ dotfiles
 Zsh and Prezto
 --------------
 
-Setup steps:
+The simplest path is to run `./setup.sh` — it installs zsh + tooling for your
+distro, clones Prezto into `~/.zprezto`, symlinks the runcoms, copies
+`zsh/.zsh-dummy` to `~/.zshrc`, links `zsh/prezto/zpreztorc` to `~/.zpreztorc`,
+and sets zsh as the default login shell via `chsh` (skipped on macOS, which
+already ships zsh).
 
-0. install `brew` if not installed,
+### Layout under `zsh/`
 
-        ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    zsh/
+    ├── .zshrc                       # main config sourced by ~/.zshrc
+    ├── .zsh-dummy                   # template that gets copied to ~/.zshrc
+    ├── .zshrc-cachyos               # CachyOS/Arch flavor (eza, bat, pacman aliases, fastfetch)
+    ├── .zshrc-go / -python / -rust  # language env setup
+    ├── .zshrc-sgx                   # Intel SGX SDK
+    ├── .zshrc-zsh-enhancements      # jump + direnv hooks
+    ├── setup-zsh-enhancements.sh    # installer for direnv + jump
+    └── prezto/zpreztorc             # Prezto module list and config
 
-1. Install `zsh` if not installed
+### Opting into language/distro modules
 
-        brew install zsh
+`~/.zshrc` (which is a copy of `zsh/.zsh-dummy`) sources `zsh/.zshrc` by default
+and has commented-out `source` lines for each opt-in module. Uncomment what you
+need on a given machine — e.g. on CachyOS:
 
-2. Install oh-my-zsh:
+        source $HOME/dev/dotfiles/zsh/.zshrc-cachyos
+
+### Manual install (if you don't want to run setup.sh)
 
         git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-
-   Then create a new Zsh configuration
-
-        for rcfile in $HOME/dev/dotfiles/prezto/*; do ln -s "$rcfile" "$HOME/.$(basename $rcfile)"; done
-
-4. Create a local `zshrc` copy
-
-        cp -f $HOME/dev/dotfiles/.zsh-dummy $HOME/.zshrc
-
-4. Take immediate effective
-
+        for rcfile in "${ZDOTDIR:-$HOME}/.zprezto/runcoms/"z*; do ln -sf "$rcfile" "$HOME/.$(basename $rcfile)"; done
+        ln -sf "$HOME/dev/dotfiles/zsh/prezto/zpreztorc" "$HOME/.zpreztorc"
+        cp -f "$HOME/dev/dotfiles/zsh/.zsh-dummy" "$HOME/.zshrc"
         source ~/.zshrc
 
 git
@@ -89,11 +97,21 @@ A very good collection of color schemes is found
 
 
 tmux
-------
+----
 
-1. Syslink conf
+`./setup.sh` symlinks `tmux/.tmux.conf` into `~/.tmux.conf`. The config
+auto-bootstraps TPM (the tmux plugin manager) on first run, so plugins
+(`tmux-sensible`, `tmux-yank`) install without any manual step. Inside tmux,
+`prefix + I` reloads the plugin set after edits.
 
-        ln -sf $HOME/dev/dotfiles/.tmux.conf ~/.tmux.conf
+Custom bindings worth knowing:
+
+- `prefix + r` — reload the config in place
+- `prefix + |` / `prefix + -` — horizontal / vertical split, preserving cwd
+- `v` / `y` in copy mode — visual select / yank (clipboard via tmux-yank)
+
+The login shell is taken from `$SHELL` rather than a hard-coded path, so the
+same config works across distros and macOS.
 
 iTerm2
 ------

@@ -46,6 +46,24 @@ elif [[ "$OS_ID" == "fedora" || "$OS_ID" == "rhel" ]]; then
         rm "jump-${JUMP_VER}-1.x86_64.rpm"
     fi
 
+# Arch / CachyOS / Manjaro
+elif [[ "$OS_ID" == "cachyos" || "$OS_ID" == "arch" || "$OS_ID" == "manjaro" || "${ID_LIKE:-}" == *"arch"* ]]; then
+    echo "Detected Arch-based system ($OS_ID)"
+
+    echo "Installing direnv..."
+    sudo pacman -S --needed --noconfirm direnv
+
+    echo "Installing jump..."
+    if command -v go >/dev/null; then
+        go install github.com/gsamokovarov/jump@v${JUMP_VER}
+    elif command -v paru >/dev/null; then
+        paru -S --needed --noconfirm jump
+    elif command -v yay >/dev/null; then
+        yay -S --needed --noconfirm jump
+    else
+        echo "No Go compiler or AUR helper found. Install Go, or install jump from AUR: https://aur.archlinux.org/packages/jump"
+    fi
+
 # Homebrew/macOS
 elif command -v brew >/dev/null; then
     echo "Detected Homebrew-based system"
@@ -57,7 +75,7 @@ elif command -v brew >/dev/null; then
     if command -v go >/dev/null; then
         go install github.com/gsamokovarov/jump@v${JUMP_VER}
     else
-        echo "No Go compiler found. Please install Go or install jump manually from https://github.com/gsamokovarov/jump"
+        echo "🛑 No Go compiler found. Please install Go or install jump manually from https://github.com/gsamokovarov/jump"
     fi
 
 # Unsupported

@@ -1,0 +1,69 @@
+# CachyOS / Arch flavor for zsh.
+# Mirrors /usr/share/cachyos-fish-config/cachyos-config.fish.
+# Source this from ~/.zshrc on Arch-based systems only.
+#
+# Summary of aliases added (grouped):
+#
+#   ls / la / ll / lt / l.   eza-based listings (icons, colors, git)
+#   update                   sudo pacman -Syu
+#   cleanup                  remove orphaned packages
+#   mirror                   refresh mirrorlist via cachyos-rate-mirrors
+#   fixpacman                clear stuck pacman db lock
+#   grubup                   regenerate grub config
+#   gitpkg                   count installed -git AUR packages
+#   big                      installed packages sorted by size
+#   rip                      last 200 installed packages with timestamps
+#   jctl                     journalctl errors since boot (-p 3 -xb)
+#   apt / apt-get            man pacman (typo helper for ex-Debian users)
+#   please                   sudo
+#   tb                       pipe stdin to termbin.com pastebin
+#   psmem / psmem10          processes sorted by memory (top 10 variant)
+#   hw                       hwinfo --short
+#
+# Plus: Prezto's pacman pmodule (lazy-loaded), bat as MANPAGER,
+#       fastfetch as interactive shell greeting (skipped inside tmux).
+
+# Prezto's pacman module (Arch-specific helpers; ignored if Prezto isn't loaded).
+(( $+functions[pmodload] )) && pmodload 'pacman'
+
+# eza replaces ls (icons + git + color)
+if command -v eza >/dev/null; then
+  alias ls='eza -al --color=always --group-directories-first --icons'
+  alias la='eza -a  --color=always --group-directories-first --icons'
+  alias ll='eza -l  --color=always --group-directories-first --icons'
+  alias lt='eza -aT --color=always --group-directories-first --icons'
+  alias l.="eza -a | grep -e '^\.'"
+fi
+
+# bat as colored man pager
+if command -v bat >/dev/null; then
+  export MANROFFOPT="-c"
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
+
+# Pacman / system
+alias update='sudo pacman -Syu'
+alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
+alias mirror='sudo cachyos-rate-mirrors'
+alias fixpacman='sudo rm /var/lib/pacman/db.lck'
+alias grubup='sudo grub-mkconfig -o /boot/grub/grub.cfg'
+alias gitpkg='pacman -Q | grep -i -- "-git" | wc -l'
+alias big="expac -H M '%m\t%n' | sort -h | nl"
+alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
+alias jctl='journalctl -p 3 -xb'
+
+# Help fingers from other distros
+alias apt='man pacman'
+alias apt-get='man pacman'
+
+# Misc CachyOS conveniences
+alias please='sudo'
+alias tb='nc termbin.com 9999'
+alias psmem='ps auxf | sort -nr -k 4'
+alias psmem10='ps auxf | sort -nr -k 4 | head -10'
+alias hw='hwinfo --short'
+
+# fastfetch greeting (only in interactive top-level shells; skip inside tmux)
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && command -v fastfetch >/dev/null; then
+  fastfetch
+fi
