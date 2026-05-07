@@ -9,5 +9,6 @@ source $HOME/dev/dotfiles/zsh/.zshrc
 # source $HOME/dev/dotfiles/zsh/.zshrc-sgx
 # source $HOME/dev/dotfiles/zsh/.zshrc-go
 # source $HOME/dev/dotfiles/zsh/.zshrc-cachyos
+# source $HOME/dev/dotfiles/zsh/.zshrc-ssh-tmux
 #
 # source $HOME/dev/dotfiles/zsh/.zshrc-zsh-enhancements

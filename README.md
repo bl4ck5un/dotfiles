@@ -104,6 +104,11 @@ auto-bootstraps TPM (the tmux plugin manager) on first run, so plugins
 (`tmux-sensible`, `tmux-yank`) install without any manual step. Inside tmux,
 `prefix + I` reloads the plugin set after edits.
 
+On servers, source `zsh/.zshrc-ssh-tmux` from `~/.zshrc` to auto-attach
+interactive SSH logins to tmux session `ssh`. The login shell is replaced with
+tmux, so exiting tmux also closes SSH. Create `~/.skip-ssh-tmux` to bypass
+this, or set `DOTFILES_SSH_TMUX_SESSION` to choose a different session name.
+
 Custom bindings worth knowing:
 
 - `prefix + r` — reload the config in place
