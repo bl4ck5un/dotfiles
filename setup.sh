@@ -16,8 +16,8 @@ case $DISTRIBUTION_ID in
         sudo zypper install cmake zsh vim git python-devel python3-devel wget curl
         sudo zypper install -t pattern devel_basis
         ;;
-    Ubuntu | Neon)
-        echo 'In Ubuntu | Neon'
+    Ubuntu | Neon | Pop | pop)
+        echo 'In Ubuntu | Neon | Pop!_OS'
         sudo apt-get update
         sudo apt-get install -y cmake zsh vim git build-essential python3-dev wget curl tmux
         ;;
