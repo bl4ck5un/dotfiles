@@ -178,13 +178,15 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme gruvbox
+  set notermguicolors
+  set t_Co=256
   set background=dark    " Setting dark mode
   let g:gruvbox_contrast_dark = 'hard'
+  let g:gruvbox_termcolors = 256
+  colorscheme gruvbox
 endif
 
 set mousemodel=popup
-set t_Co=256
 set guioptions=egmrti
 set gfn=Monospace\ 10
 
@@ -202,16 +204,6 @@ else
   let g:indentLine_conceallevel=2
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
-
-  
-  if $COLORTERM == 'gnome-terminal'
-    set term=gnome-256color
-  else
-    if $TERM == 'xterm'
-      set term=xterm-256color
-    endif
-  endif
-  
 endif
 
 
@@ -553,4 +545,3 @@ else
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
 endif
-
