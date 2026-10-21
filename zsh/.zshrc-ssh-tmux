@@ -1,9 +1,16 @@
 # Attach interactive SSH logins to tmux, replacing the login shell so the SSH
 # session closes when tmux exits. Create ~/.skip-ssh-tmux to disable this.
+
+# Print inside the first shell so tmux's screen switch does not hide the notice.
+if [[ -o interactive && -n "$TMUX" && "$DOTFILES_SSH_TMUX_NOTICE" == 1 ]]; then
+  tmux set-environment -u DOTFILES_SSH_TMUX_NOTICE
+  unset DOTFILES_SSH_TMUX_NOTICE
+  print -r -- 'Auto tmux enabled. Disable with: touch ~/.skip-ssh-tmux'
+fi
+
 if [[ -o interactive && -n "$SSH_CONNECTION" && -z "$TMUX" && ! -e "$HOME/.skip-ssh-tmux" ]] \
     && command -v tmux >/dev/null \
     && [[ -t 0 && -t 1 ]]; then
   session_name="${DOTFILES_SSH_TMUX_SESSION:-ssh}"
-  exec tmux new-session -A -s "$session_name" \; \
-    display-message -d 10000 'Auto tmux enabled. Disable with: touch ~/.skip-ssh-tmux'
+  exec tmux new-session -A -s "$session_name" -e DOTFILES_SSH_TMUX_NOTICE=1
 fi
